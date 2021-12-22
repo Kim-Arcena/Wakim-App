@@ -21,7 +21,7 @@
         <LinearLayout
             android:id="@+id/fragment_createalarm_timePickerLayout"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="250dp"
             android:orientation="horizontal"
             android:layout_margin="15dp"
             android:elevation="7dp"
@@ -40,6 +40,7 @@
                 android:id="@+id/fragment_createalarm_timePicker"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
                 android:layout_weight="0.6"
                 android:timePickerMode="spinner" />
         </LinearLayout>
