@@ -1,4 +1,4 @@
-package com.example.bigproject;
+package com.example.Wakim;
 
 public class Model {
 

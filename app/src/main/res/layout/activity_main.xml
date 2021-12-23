@@ -25,12 +25,12 @@
 
     <TextView
         android:id="@+id/logo"
-        android:layout_width="111dp"
-        android:layout_height="35dp"
+        android:layout_width="167dp"
+        android:layout_height="120dp"
         android:fontFamily="sans-serif-light"
-        android:textAlignment="center"
         android:text="Wakim Up!"
-        android:textSize="23sp"
+        android:textAlignment="center"
+        android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"

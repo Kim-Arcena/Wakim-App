@@ -1,12 +1,11 @@
-package com.example.bigproject.Activities;
+package com.example.Wakim.Activities;
 
 import android.os.Bundle;
-import androidx.appcompat.app.AppCompatActivity;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.bigproject.R;
+import com.example.Wakim.R;
 
 public class MainActivity extends AppCompatActivity {
     @Override

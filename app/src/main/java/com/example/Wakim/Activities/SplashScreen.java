@@ -1,4 +1,4 @@
-package com.example.bigproject.Activities;
+package com.example.Wakim.Activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -11,7 +11,7 @@ import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.bigproject.R;
+import com.example.Wakim.R;
 
 public class SplashScreen extends AppCompatActivity {
     private  static  int SPLASH_SCREEN = 2000;
@@ -42,7 +42,7 @@ public class SplashScreen extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent intent = new Intent(SplashScreen.this, Dashboard.class);
+                Intent intent = new Intent(SplashScreen.this, MainActivity.class);
                 startActivity(intent);
                 finish();
             }
