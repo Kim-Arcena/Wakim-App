@@ -1,4 +1,4 @@
-package com.example.bigproject;
+package com.example.bigproject.Activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -10,7 +10,8 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.window.SplashScreen;
+
+import com.example.bigproject.R;
 
 public class MainActivity extends AppCompatActivity {
     private  static  int SPLASH_SCREEN = 2000;

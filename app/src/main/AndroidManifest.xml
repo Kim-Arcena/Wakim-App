@@ -10,9 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.BigProject">
         <activity android:name=".AddAlarmActivity"></activity>
-        <activity android:name=".Dashboard" />
+        <activity android:name=".Activities.Dashboard" />
         <activity
-            android:name=".MainActivity"
+            android:name=".Activities.MainActivity"
             android:exported="true"
             android:theme="@style/Theme.AppCompat.DayNight.NoActionBar">
             <intent-filter>
