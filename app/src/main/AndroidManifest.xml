@@ -9,10 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.BigProject">
-        <activity android:name=".AddAlarmActivity"></activity>
+        <activity android:name=".AddAlarmActivity" />
         <activity android:name=".Activities.Dashboard" />
         <activity
-            android:name=".Activities.MainActivity"
+            android:name=".Activities.SplashScreen"
             android:exported="true"
             android:theme="@style/Theme.AppCompat.DayNight.NoActionBar">
             <intent-filter>
