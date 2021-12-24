@@ -9,7 +9,6 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.BigProject">
-        <activity android:name="com.example.Wakim.Activities.Dashboard" />
         <activity android:name="com.example.Wakim.Activities.MainActivity" />
         <activity
             android:name="com.example.Wakim.Activities.SplashScreen"
