@@ -1,10 +1,13 @@
 package com.example.Wakim.createAlarm;
 
+import android.content.Context;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.LifecycleObserver;
+import androidx.navigation.Navigation;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,6 +21,7 @@ import android.widget.TimePicker;
 
 import com.example.Wakim.Alarm;
 import com.example.Wakim.R;
+import com.example.Wakim.createAlarmViewModel;
 
 import java.util.Random;
 
@@ -39,10 +43,34 @@ public class CreateAlarmFragment extends Fragment {
     @BindView(R.id.fragment_createalarm_recurring_options) LinearLayout recurringOptions;
 
     /**
+     * Called to do initial creation of a fragment.  This is called after
+     * {@link #onAttach(Context)} and before
+     * {@link #onCreateView(LayoutInflater, ViewGroup, Bundle)}.
+     *
+     * <p>Note that this can be called while the fragment's activity is
+     * still in the process of being created.  As such, you can not rely
+     * on things like the activity's content view hierarchy being initialized
+     * at this point.  If you want to do work once the activity itself is
+     * created, add a {@link LifecycleObserver} on the
+     * activity's Lifecycle, removing it when it receives the
+     * {@link androidx.lifecycle.LifecycleService e.State#CREATED} callback.
+     *
+     * <p>Any restored child fragments will be created before the base
+     * <code>Fragment.onCreate</code> method returns.</p>
+     *
+     * @param savedInstanceState If the fragment is being re-created from
+     *                           a previous saved state, this is the state.
+     */
+    @Override
+    public void onCreate(@Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+    }
+
+    /**
      * Called to have the fragment instantiate its user interface view.
      * This is optional, and non-graphical fragments can return null. This will be called between
      * {@link #onCreate(Bundle)} and {@link #onViewCreated(View, Bundle)}.
-     * <p>A default View can be returned by calling {@link #Fragment(int)} in your
+     * <p>A default View can be returned by calling {@link Fragment()} in your
      * constructor. Otherwise, this method returns null.
      *
      * <p>It is recommended to <strong>only</strong> inflate the layout in this method and move
@@ -60,6 +88,7 @@ public class CreateAlarmFragment extends Fragment {
      *                           from a previous saved state as given here.
      * @return Return the View for the fragment's UI, or null.
      */
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -69,27 +98,44 @@ public class CreateAlarmFragment extends Fragment {
 
         recurring.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
-            public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
-                if(isChecked){
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
                     recurringOptions.setVisibility(View.VISIBLE);
-                }
-                else{
+                } else {
                     recurringOptions.setVisibility(View.GONE);
                 }
             }
         });
+
         scheduleAlarm.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
+            public void onClick(View v) {
                 scheduleAlarm();
+                Navigation.findNavController(v).navigate(R.id.action_createAlarmFragment_to_alarmsListFragment);
             }
         });
         return view;
-
     }
 
     private void scheduleAlarm() {
         int alarmId = new Random().nextInt(Integer.MAX_VALUE);
+        Alarm alarm = new Alarm(
+                alarmId,
+                TimePickerUtil.getTimePickerHour(timePicker),
+                TimePickerUtil.getTimePickerMinute(timePicker),
+                title.getText().toString(),
+                System.currentTimeMillis(),
+                true,
+                recurring.isChecked(),
+                mon.isChecked(),
+                tue.isChecked(),
+                wed.isChecked(),
+                thu.isChecked(),
+                fri.isChecked(),
+                sat.isChecked(),
+                sun.isChecked()
+        );
+        createAlarmViewModel.insert(alarm);
 
     }
 }
