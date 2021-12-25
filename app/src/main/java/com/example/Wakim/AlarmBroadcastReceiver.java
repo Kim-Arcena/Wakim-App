@@ -3,6 +3,7 @@ package com.example.Wakim;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 import android.widget.Toast;
 
 import java.util.Calendar;
@@ -25,6 +26,7 @@ public class AlarmBroadcastReceiver extends BroadcastReceiver {
         if(Intent.ACTION_BOOT_COMPLETED.equals(intent.getAction())){
             String toastText = String.format("Alarm Reboot");
             Toast.makeText(context,toastText,Toast.LENGTH_LONG).show();
+            startRescheduleAlarmService(context);
         }
         else{
             String toastText = String.format("Alarm Received");
@@ -35,6 +37,15 @@ public class AlarmBroadcastReceiver extends BroadcastReceiver {
             if(alarmIsToday(intent)){
                 startAlarmService(context, intent);
             }
+        }
+    }
+
+    private void startRescheduleAlarmService(Context context) {
+        Intent intentService = new Intent(context, RescheduleAlarmService.class);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            context.startForegroundService(intentService);
+        } else {
+            context.startService(intentService);
         }
     }
 
