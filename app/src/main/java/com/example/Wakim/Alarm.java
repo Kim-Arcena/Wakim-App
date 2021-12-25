@@ -1,17 +1,9 @@
 package com.example.Wakim;
 
-import android.app.AlarmManager;
-import android.app.PendingIntent;
-import android.content.Context;
-import android.content.Intent;
-import android.util.Log;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
-
-import java.util.Calendar;
 
 @Entity(tableName = "alarm_table")
 public class Alarm {
@@ -98,5 +90,4 @@ public class Alarm {
     public boolean isSunday() {
         return sunday;
     }
-
 }
