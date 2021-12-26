@@ -7,8 +7,8 @@ import androidx.lifecycle.AndroidViewModel;
 
 import org.jetbrains.annotations.NotNull;
 
-public class createAlarmViewModel extends AndroidViewModel {
-    public createAlarmViewModel(@NonNull @NotNull Application application) {
+public class CreateAlarmViewModel extends AndroidViewModel {
+    public CreateAlarmViewModel(@NonNull @NotNull Application application) {
         super(application);
     }
 

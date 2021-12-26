@@ -7,6 +7,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.LifecycleObserver;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
 
 import android.view.LayoutInflater;
@@ -21,7 +22,7 @@ import android.widget.TimePicker;
 
 import com.example.Wakim.Alarm;
 import com.example.Wakim.R;
-import com.example.Wakim.createAlarmViewModel;
+import com.example.Wakim.CreateAlarmViewModel;
 
 import java.util.Random;
 
@@ -41,7 +42,7 @@ public class CreateAlarmFragment extends Fragment {
     @BindView(R.id.fragment_createalarm_checkSat) CheckBox sat;
     @BindView(R.id.fragment_createalarm_checkSun) CheckBox sun;
     @BindView(R.id.fragment_createalarm_recurring_options) LinearLayout recurringOptions;
-
+    private CreateAlarmViewModel createAlarmViewModel;
     /**
      * Called to do initial creation of a fragment.  This is called after
      * {@link #onAttach(Context)} and before
@@ -53,7 +54,7 @@ public class CreateAlarmFragment extends Fragment {
      * at this point.  If you want to do work once the activity itself is
      * created, add a {@link LifecycleObserver} on the
      * activity's Lifecycle, removing it when it receives the
-     * {@link androidx.lifecycle.LifecycleService e.State#CREATED} callback.
+     * {@link androidx.lifecycle.Lifecycle.State#CREATED} callback.
      *
      * <p>Any restored child fragments will be created before the base
      * <code>Fragment.onCreate</code> method returns.</p>
@@ -64,7 +65,10 @@ public class CreateAlarmFragment extends Fragment {
     @Override
     public void onCreate(@Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        createAlarmViewModel = new ViewModelProvider(this).get(CreateAlarmViewModel.class);
     }
+
 
     /**
      * Called to have the fragment instantiate its user interface view.
@@ -135,7 +139,7 @@ public class CreateAlarmFragment extends Fragment {
                 sat.isChecked(),
                 sun.isChecked()
         );
-        createAlarmViewModel.insert(alarm);
+        CreateAlarmViewModel.insert(alarm);
 
 
     }
