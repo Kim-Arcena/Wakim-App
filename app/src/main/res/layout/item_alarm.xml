@@ -9,7 +9,7 @@
         android:layout_height="wrap_content"
         app:cardCornerRadius="6dp"
         app:cardElevation="6dp"
-        android:layout_margin="8dp">
+        android:layout_margin="15dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -20,14 +20,15 @@
             <TextView
                 android:id="@+id/item_alarm_time"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
                 android:text="00:00"
                 android:textSize="36sp"/>
 
             <ImageView
+                android:id="@+id/item_alarm_recurring"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/item_alarm_recurring"
                 android:layout_margin="2dp"/>
 
             <LinearLayout
@@ -40,21 +41,27 @@
                     android:id="@+id/item_alarm_recurringDays"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="10sp" />
+                    android:padding="3dp"
+                    android:text="Days"
+                    android:textSize="15sp" />
 
                 <TextView
                     android:id="@+id/item_alarm_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="12sp"/>
+                    android:padding="3dp"
+                    android:text="Title"
+                    android:textStyle="bold"
+                    android:textSize="15sp"/>
 
             </LinearLayout>
 
             <Switch
                 android:id="@+id/item_alarm_started"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1" />
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_gravity="center_vertical"/>
 
         </LinearLayout>
 

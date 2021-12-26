@@ -49,7 +49,9 @@ public class AlarmRecyclerViewAdapter extends RecyclerView.Adapter<AlarmViewHold
     @NotNull
     @Override
     public AlarmViewHolder onCreateViewHolder(@NonNull @NotNull ViewGroup parent, int viewType) {
-        return null;
+        //inflate View
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_alarm,parent,false);
+        return new AlarmViewHolder(view, listener);
     }
 
     /**
@@ -72,9 +74,11 @@ public class AlarmRecyclerViewAdapter extends RecyclerView.Adapter<AlarmViewHold
      *                 item at the given position in the data set.
      * @param position The position of the item within the adapter's data set.
      */
+
     @Override
     public void onBindViewHolder(@NonNull @NotNull AlarmViewHolder holder, int position) {
-
+        Alarm alarm = alarms.get(position);
+        holder.bind(alarm);
     }
 
     /**
