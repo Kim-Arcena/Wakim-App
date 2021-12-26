@@ -140,7 +140,7 @@ public class CreateAlarmFragment extends Fragment {
                 sun.isChecked()
         );
         CreateAlarmViewModel.insert(alarm);
-
+        alarm.schedule(getContext());
 
     }
 }
