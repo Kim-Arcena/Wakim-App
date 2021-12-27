@@ -153,6 +153,36 @@ public class Alarm {
             Toast.makeText(context, toastText, Toast.LENGTH_LONG).show();
             alarmManager.setExact(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), alarmPendingIntent);
         }
+        else{
+            String toastText = String.format("Recurring Alarm %s scheduled for %s at %02d:%02d", title, getRecurringDaysString(), hour, minute, alarmId);
+            Toast.makeText(context, toastText, Toast.LENGTH_LONG).show();
+        }
 
+    }
+
+    private String getRecurringDaysString() {
+        String days = "";
+        if(monday){
+            days += "Mon ";
+        }
+        if(tuesday){
+            days += "Tue ";
+        }
+        if(wednesday){
+            days += "Wed ";
+        }
+        if(thursday){
+            days += "Thurs ";
+        }
+        if(friday){
+            days += "Fri ";
+        }
+        if(saturday){
+            days += "Sat ";
+        }
+        if(sunday){
+            days += "Sun ";
+        }
+        return days;
     }
 }
