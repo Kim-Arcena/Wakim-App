@@ -1,9 +1,31 @@
 package com.example.Wakim;
 
 
+import android.app.AlarmManager;
+import android.app.PendingIntent;
+import android.content.Context;
+import android.content.Intent;
+import android.text.format.DateUtils;
+import android.util.Log;
+import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
+
+import com.example.Wakim.createAlarm.DayUtil;
+
+import java.util.Calendar;
+
+import static com.example.Wakim.AlarmBroadcastReceiver.FRIDAY;
+import static com.example.Wakim.AlarmBroadcastReceiver.MONDAY;
+import static com.example.Wakim.AlarmBroadcastReceiver.RECURRING;
+import static com.example.Wakim.AlarmBroadcastReceiver.SATURDAY;
+import static com.example.Wakim.AlarmBroadcastReceiver.SUNDAY;
+import static com.example.Wakim.AlarmBroadcastReceiver.THURSDAY;
+import static com.example.Wakim.AlarmBroadcastReceiver.TITLE;
+import static com.example.Wakim.AlarmBroadcastReceiver.TUESDAY;
+import static com.example.Wakim.AlarmBroadcastReceiver.WEDNESDAY;
 
 @Entity(tableName = "alarm_table")
 public class Alarm {
@@ -18,7 +40,8 @@ public class Alarm {
 
     private long created;
 
-    public Alarm(int alarmId, int hour, int minute, String title, long created, boolean started, boolean recurring, boolean monday, boolean tuesday, boolean wednesday, boolean thursday, boolean friday, boolean saturday, boolean sunday) {
+    public Alarm(int alarmId, int hour, int minute, String title, long created, boolean started, boolean recurring,
+                 boolean monday, boolean tuesday, boolean wednesday, boolean thursday, boolean friday, boolean saturday, boolean sunday) {
         this.alarmId = alarmId;
         this.hour = hour;
         this.minute = minute;
@@ -89,5 +112,47 @@ public class Alarm {
 
     public boolean isSunday() {
         return sunday;
+    }
+
+    public void schedule(Context context) {
+        AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
+
+        Intent intent = new Intent(context, AlarmBroadcastReceiver.class);
+        intent.putExtra(RECURRING, recurring);
+        intent.putExtra(MONDAY, monday);
+        intent.putExtra(TUESDAY, tuesday);
+        intent.putExtra(WEDNESDAY, wednesday);
+        intent.putExtra(THURSDAY, thursday);
+        intent.putExtra(FRIDAY, friday);
+        intent.putExtra(SATURDAY, saturday);
+        intent.putExtra(SUNDAY, sunday);
+        intent.putExtra(TITLE, title);
+
+        PendingIntent alarmPendingIntent = PendingIntent.getBroadcast(context, alarmId, intent, 0);
+
+        //take the time and locale of the system
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTimeInMillis(System.currentTimeMillis());
+        calendar.set(Calendar.HOUR_OF_DAY, hour);
+        calendar.set(Calendar.MINUTE, minute);
+        calendar.set(Calendar.SECOND, 0);
+        calendar.set(Calendar.MILLISECOND, 0);
+
+        //check if the alarm has already passed. If it does, increment day by 1
+        if (calendar.getTimeInMillis() <= System.currentTimeMillis()) {
+            calendar.set(Calendar.DAY_OF_MONTH, calendar.get(Calendar.DAY_OF_MONTH + 1));
+        }
+        if (!recurring) {
+            String toastText = null;
+            try {
+                toastText = String.format("One Time Alarm %s scheduled for %s at %02d:%02d", title, DayUtil.toStringDay(calendar.get(Calendar.DAY_OF_WEEK)), hour, minute, alarmId);
+            }
+            catch (Exception e){
+                e.printStackTrace();
+            }
+            Toast.makeText(context, toastText, Toast.LENGTH_LONG).show();
+            alarmManager.setExact(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), alarmPendingIntent);
+        }
+
     }
 }

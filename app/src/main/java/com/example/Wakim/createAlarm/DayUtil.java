@@ -11,7 +11,7 @@ public final class DayUtil {
      * @return String of the day
      * @throws Exception
      */
-    public static final String today(int day) throws Exception{
+    public static final String toStringDay(int day) throws Exception{
         switch (day){
             case Calendar.SUNDAY:
                 return "Sunday";
