@@ -114,6 +114,18 @@ public class Alarm {
         return sunday;
     }
 
+    public String getTitle() {
+        return title;
+    }
+
+    public long getCreated() {
+        return created;
+    }
+
+    public void setCreated(long created) {
+        this.created = created;
+    }
+
     public void schedule(Context context) {
         AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
 

@@ -83,8 +83,6 @@ public class AlarmBroadcastReceiver extends BroadcastReceiver {
                 if(intent.getBooleanExtra(SUNDAY, false))
                     return true;
                 return  false;
-
-
         }
         return false;
 
@@ -95,5 +93,13 @@ public class AlarmBroadcastReceiver extends BroadcastReceiver {
         intentService.putExtra(TITLE, intent.getStringExtra(TITLE));
         intentService.putExtra(DESCRIPTION, intent.getStringExtra(DESCRIPTION));
 
+    }
+    private void startRescheduleAlarmsService(Context context) {
+        Intent intentService = new Intent(context, RescheduleAlarmsService.class);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            context.startForegroundService(intentService);
+        } else {
+            context.startService(intentService);
+        }
     }
 }
