@@ -5,6 +5,7 @@ import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -162,7 +163,7 @@ public class Alarm {
         if (!recurring) {
             String toastText = null;
             try {
-                toastText = String.format("One Time Alarm %s scheduled for %s at %02d:%02d", title, DayUtil.toStringDay(calendar.get(Calendar.DAY_OF_WEEK)), hour, minute, alarmId);
+                toastText = String.format("One Time Alarm %s scheduled for %s at %02d:%02d", title, DayUtil.toStringDay(calendar.get(Calendar.DAY_OF_WEEK)), hour%12, minute, alarmId);
             }
             catch (Exception e){
                 e.printStackTrace();
@@ -171,7 +172,7 @@ public class Alarm {
             alarmManager.setExact(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), alarmPendingIntent);
         }
         else{
-            String toastText = String.format("Recurring Alarm %s scheduled for %s at %02d:%02d", title, getRecurringDaysString(), hour, minute, alarmId);
+            String toastText = String.format("Recurring Alarm %s scheduled for %s at %02d:%02d", title, getRecurringDaysString(), hour%12, minute, alarmId);
             Toast.makeText(context, toastText, Toast.LENGTH_LONG).show();
 
             final long RUN_DAILY = 24 * 60 * 60 * 1000;
@@ -204,5 +205,19 @@ public class Alarm {
             days += "Sun ";
         }
         return days;
+    }
+
+    public void cancelAlarm(Context context) {
+        AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
+        Intent intent = new Intent(context, AlarmBroadcastReceiver.class);
+        PendingIntent alarmPendingIntent = PendingIntent.getBroadcast(context, alarmId, intent, 0);
+        alarmManager.cancel(alarmPendingIntent);
+        this.started = false;
+
+        //notify user via toast
+        String toastText = String.format("Cancelled Alarm ID - %s scheduled at %02d:%02d", alarmId, hour%12, minute);
+        Toast.makeText(context, toastText, Toast.LENGTH_LONG).show();
+        Log.i("cancel", toastText);
+
     }
 }
