@@ -15,6 +15,7 @@ import androidx.core.app.NotificationCompat;
 import com.example.Wakim.Activities.RingActivity;
 import com.example.Wakim.R;
 
+import static com.example.Wakim.Activities.App.CHANNEL_ID;
 import static com.example.Wakim.broadcastReceiver.AlarmBroadcastReceiver.TITLE;
 
 public class AlarmService extends Service {
@@ -37,6 +38,21 @@ public class AlarmService extends Service {
 
         String alarmTitle = String.format("%s Alarm", intent.getStringExtra(TITLE));
 
+        Notification notification = new NotificationCompat.Builder(this, CHANNEL_ID)
+                .setContentTitle(alarmTitle)
+                .setContentText("Ring Ring .. Ring Ring")
+                .setSmallIcon(R.drawable.ic_alarm_black_24dp)
+                .setContentIntent(pendingIntent)
+                .build();
+
+        mediaPlayer.start();
+
+        long[] pattern = { 0, 100, 1000 };
+        vibrator.vibrate(pattern, 0);
+
+        startForeground(1, notification);
+
+        return START_STICKY;
     }
 
     @Override
