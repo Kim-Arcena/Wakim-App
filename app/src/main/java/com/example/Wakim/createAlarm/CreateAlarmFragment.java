@@ -31,6 +31,7 @@ import butterknife.ButterKnife;
 public class CreateAlarmFragment extends Fragment {
     @BindView(R.id.fragment_createalarm_timePicker) TimePicker timePicker;
     @BindView(R.id.fragment_createalarm_title) EditText title;
+    @BindView(R.id.fragment_createalarm_description) EditText description;
     @BindView(R.id.fragment_createalarm_scheduleAlarm) Button scheduleAlarm;
     @BindView(R.id.fragment_createalarm_recurring) CheckBox recurring;
     @BindView(R.id.fragment_createalarm_checkMon) CheckBox mon;
@@ -127,6 +128,7 @@ public class CreateAlarmFragment extends Fragment {
                 TimePickerUtil.getTimePickerHour(timePicker),
                 TimePickerUtil.getTimePickerMinute(timePicker),
                 title.getText().toString(),
+                description.getText().toString(),
                 System.currentTimeMillis(),
                 true,
                 recurring.isChecked(),

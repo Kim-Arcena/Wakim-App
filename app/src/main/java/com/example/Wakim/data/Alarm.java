@@ -16,6 +16,7 @@ import com.example.Wakim.createAlarm.DayUtil;
 
 import java.util.Calendar;
 
+import static com.example.Wakim.broadcastReceiver.AlarmBroadcastReceiver.DESCRIPTION;
 import static com.example.Wakim.broadcastReceiver.AlarmBroadcastReceiver.FRIDAY;
 import static com.example.Wakim.broadcastReceiver.AlarmBroadcastReceiver.MONDAY;
 import static com.example.Wakim.broadcastReceiver.AlarmBroadcastReceiver.RECURRING;
@@ -35,11 +36,11 @@ public class Alarm {
     private int hour, minute;
     private boolean started, recurring;
     private boolean monday, tuesday, wednesday, thursday, friday, saturday, sunday;
-    private String title;
+    private String title, description;
 
     private long created;
 
-    public Alarm(int alarmId, int hour, int minute, String title, long created, boolean started, boolean recurring,
+    public Alarm(int alarmId, int hour, int minute, String title, String description, long created, boolean started, boolean recurring,
                  boolean monday, boolean tuesday, boolean wednesday, boolean thursday, boolean friday, boolean saturday, boolean sunday) {
         this.alarmId = alarmId;
         this.hour = hour;
@@ -57,6 +58,7 @@ public class Alarm {
         this.sunday = sunday;
 
         this.title = title;
+        this.description = description;
 
         this.created = created;
     }
@@ -116,6 +118,9 @@ public class Alarm {
     public String getTitle() {
         return title;
     }
+    public String getDescription() {
+        return description;
+    }
 
     public long getCreated() {
         return created;
@@ -138,6 +143,7 @@ public class Alarm {
         intent.putExtra(SATURDAY, saturday);
         intent.putExtra(SUNDAY, sunday);
         intent.putExtra(TITLE, title);
+        intent.putExtra(DESCRIPTION, description);
 
         PendingIntent alarmPendingIntent = PendingIntent.getBroadcast(context, alarmId, intent, 0);
 
