@@ -173,8 +173,11 @@ public class Alarm {
         else{
             String toastText = String.format("Recurring Alarm %s scheduled for %s at %02d:%02d", title, getRecurringDaysString(), hour, minute, alarmId);
             Toast.makeText(context, toastText, Toast.LENGTH_LONG).show();
-        }
 
+            final long RUN_DAILY = 24 * 60 * 60 * 1000;
+            alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), RUN_DAILY, alarmPendingIntent);
+        }
+        this.started = true;
     }
 
     private String getRecurringDaysString() {
