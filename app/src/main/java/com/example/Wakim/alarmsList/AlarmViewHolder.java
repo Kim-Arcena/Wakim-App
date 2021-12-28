@@ -1,6 +1,7 @@
 package com.example.Wakim.alarmsList;
 
 import android.view.View;
+import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.Switch;
 import android.widget.TextView;
@@ -44,6 +45,19 @@ public class AlarmViewHolder extends RecyclerView.ViewHolder {
         String alarmText = String.format("%02d:%02d", alarm.getHour(), alarm.getMinute());
 
         alarmTime.setText(alarmText);
+        alarmStarted.setChecked(alarm.isStarted());
 
+        if (alarm.getTitle().length() != 0) {
+            alarmTitle.setText(String.format("%s | %s | ID - %d ", alarm.getTitle(), alarm.getDescription(), alarm.getAlarmId()));
+        } else {
+            alarmTitle.setText(String.format("%s | ID - %d ", "Alarm", alarm.getAlarmId()));
+        }
+
+        alarmStarted.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                listener.onToggle(alarm);
+            }
+        });
     }
 }
