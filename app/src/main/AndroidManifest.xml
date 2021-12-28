@@ -3,7 +3,6 @@
     package="com.example.Wakim">
 
     <uses-permission android:name="android.permission.VIBRATE" />
-
     <uses-permission android:name="android.permission.VIBRATE" />
 
     <application
@@ -13,10 +12,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.BigProject">
-        <activity android:name="com.example.Wakim.Activities.MainActivity">
-        </activity>
+        <activity android:name=".Activities.RingActivity"></activity>
+        <activity android:name=".Activities.MainActivity"></activity>
         <activity
-            android:name="com.example.Wakim.Activities.SplashScreen"
+            android:name=".Activities.SplashScreen"
             android:exported="true"
             android:theme="@style/Theme.AppCompat.DayNight.NoActionBar">
             <intent-filter>
@@ -25,7 +24,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <receiver android:name=".broadcastReceiver.AlarmBroadcastReceiver"
+
+        <receiver
+            android:name=".broadcastReceiver.AlarmBroadcastReceiver"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
