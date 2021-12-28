@@ -8,10 +8,15 @@ import androidx.lifecycle.AndroidViewModel;
 import org.jetbrains.annotations.NotNull;
 
 public class CreateAlarmViewModel extends AndroidViewModel {
-    public CreateAlarmViewModel(@NonNull @NotNull Application application) {
+    private static AlarmRepository alarmRepository;
+
+    public CreateAlarmViewModel(@NonNull Application application) {
         super(application);
+
+        alarmRepository = new AlarmRepository(application);
     }
 
     public static void insert(Alarm alarm) {
+        alarmRepository.insert(alarm);
     }
 }
