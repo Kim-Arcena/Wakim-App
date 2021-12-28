@@ -1,13 +1,10 @@
-package com.example.Wakim.createAlarm;
+package com.example.Wakim.data;
 
 import android.content.Context;
 
 import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
-
-import com.example.Wakim.Alarm;
-import com.example.Wakim.AlarmDao;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;

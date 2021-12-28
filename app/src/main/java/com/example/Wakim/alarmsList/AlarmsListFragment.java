@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -17,7 +16,7 @@ import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.Wakim.Alarm;
+import com.example.Wakim.data.Alarm;
 import com.example.Wakim.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -69,7 +68,7 @@ public class AlarmsListFragment extends Fragment implements OntoggleAlarmListene
      * Called to have the fragment instantiate its user interface view.
      * This is optional, and non-graphical fragments can return null. This will be called between
      * {@link #onCreate(Bundle)} and {@link #onViewCreated(View, Bundle)}.
-     * <p>A default View can be returned by calling {@link #Fragment(int)} in your
+     * <p>A default View can be returned by calling  t(int)} in your
      * constructor. Otherwise, this method returns null.
      *
      * <p>It is recommended to <strong>only</strong> inflate the layout in this method and move

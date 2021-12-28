@@ -1,10 +1,13 @@
-package com.example.Wakim;
+package com.example.Wakim.broadcastReceiver;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 import android.widget.Toast;
+
+import com.example.Wakim.service.AlarmService;
+import com.example.Wakim.service.RescheduleAlarmsService;
 
 import java.util.Calendar;
 
@@ -41,7 +44,7 @@ public class AlarmBroadcastReceiver extends BroadcastReceiver {
     }
 
     private void startRescheduleAlarmService(Context context) {
-        Intent intentService = new Intent(context, RescheduleAlarmService.class);
+        Intent intentService = new Intent(context, RescheduleAlarmsService.class);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             context.startForegroundService(intentService);
         } else {

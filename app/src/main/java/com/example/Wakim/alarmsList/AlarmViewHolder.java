@@ -1,4 +1,4 @@
-package com.example.Wakim;
+package com.example.Wakim.alarmsList;
 
 import android.view.View;
 import android.widget.ImageView;
@@ -8,17 +8,19 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.Wakim.R;
 import com.example.Wakim.alarmsList.OntoggleAlarmListener;
+import com.example.Wakim.data.Alarm;
 
 import org.jetbrains.annotations.NotNull;
 
 public class AlarmViewHolder extends RecyclerView.ViewHolder {
+    public Switch alarmStarted;
     //declare variables
     private TextView alarmTime;
     private ImageView alarmRecurring;
     private TextView alarmRecurringDays;
     private TextView alarmTitle;
-    Switch alarmStarted;
 
     //toggle listener
     private OntoggleAlarmListener listener;

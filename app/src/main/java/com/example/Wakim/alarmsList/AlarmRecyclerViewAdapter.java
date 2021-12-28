@@ -8,10 +8,8 @@ import android.widget.ListView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.Wakim.Alarm;
-import com.example.Wakim.AlarmViewHolder;
+import com.example.Wakim.data.Alarm;
 import com.example.Wakim.R;
-import com.example.Wakim.alarmsList.OntoggleAlarmListener;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -91,9 +89,16 @@ public class AlarmRecyclerViewAdapter extends RecyclerView.Adapter<AlarmViewHold
      */
     @Override
     public int getItemCount() {
-        return 0;
+        return alarms.size();
     }
 
     public void setAlarms(List<Alarm> alarms) {
+        this.alarms = alarms;
+        notifyDataSetChanged();
+    }
+    @Override
+    public void onViewRecycled(@NonNull AlarmViewHolder holder) {
+        super.onViewRecycled(holder);
+        holder.alarmStarted.setOnCheckedChangeListener(null);
     }
 }

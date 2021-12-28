@@ -1,10 +1,8 @@
-package com.example.Wakim;
+package com.example.Wakim.data;
 
 import android.app.Application;
 
 import androidx.lifecycle.LiveData;
-
-import com.example.Wakim.createAlarm.AlarmDatabase;
 
 import java.util.List;
 

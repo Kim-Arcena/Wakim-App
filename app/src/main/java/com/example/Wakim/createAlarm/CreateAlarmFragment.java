@@ -20,9 +20,8 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TimePicker;
 
-import com.example.Wakim.Alarm;
+import com.example.Wakim.data.Alarm;
 import com.example.Wakim.R;
-import com.example.Wakim.CreateAlarmViewModel;
 
 import java.util.Random;
 

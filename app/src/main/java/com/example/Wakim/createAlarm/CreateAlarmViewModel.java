@@ -1,11 +1,12 @@
-package com.example.Wakim;
+package com.example.Wakim.createAlarm;
 
 import android.app.Application;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 
-import org.jetbrains.annotations.NotNull;
+import com.example.Wakim.data.Alarm;
+import com.example.Wakim.data.AlarmRepository;
 
 public class CreateAlarmViewModel extends AndroidViewModel {
     private static AlarmRepository alarmRepository;

@@ -6,10 +6,8 @@ import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 
-import com.example.Wakim.Alarm;
-import com.example.Wakim.AlarmRepository;
-
-import org.jetbrains.annotations.NotNull;
+import com.example.Wakim.data.Alarm;
+import com.example.Wakim.data.AlarmRepository;
 
 import java.util.List;
 

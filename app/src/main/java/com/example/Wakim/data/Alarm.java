@@ -1,31 +1,30 @@
-package com.example.Wakim;
+package com.example.Wakim.data;
 
 
 import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
-import android.text.format.DateUtils;
-import android.util.Log;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
+import com.example.Wakim.broadcastReceiver.AlarmBroadcastReceiver;
 import com.example.Wakim.createAlarm.DayUtil;
 
 import java.util.Calendar;
 
-import static com.example.Wakim.AlarmBroadcastReceiver.FRIDAY;
-import static com.example.Wakim.AlarmBroadcastReceiver.MONDAY;
-import static com.example.Wakim.AlarmBroadcastReceiver.RECURRING;
-import static com.example.Wakim.AlarmBroadcastReceiver.SATURDAY;
-import static com.example.Wakim.AlarmBroadcastReceiver.SUNDAY;
-import static com.example.Wakim.AlarmBroadcastReceiver.THURSDAY;
-import static com.example.Wakim.AlarmBroadcastReceiver.TITLE;
-import static com.example.Wakim.AlarmBroadcastReceiver.TUESDAY;
-import static com.example.Wakim.AlarmBroadcastReceiver.WEDNESDAY;
+import static com.example.Wakim.broadcastReceiver.AlarmBroadcastReceiver.FRIDAY;
+import static com.example.Wakim.broadcastReceiver.AlarmBroadcastReceiver.MONDAY;
+import static com.example.Wakim.broadcastReceiver.AlarmBroadcastReceiver.RECURRING;
+import static com.example.Wakim.broadcastReceiver.AlarmBroadcastReceiver.SATURDAY;
+import static com.example.Wakim.broadcastReceiver.AlarmBroadcastReceiver.SUNDAY;
+import static com.example.Wakim.broadcastReceiver.AlarmBroadcastReceiver.THURSDAY;
+import static com.example.Wakim.broadcastReceiver.AlarmBroadcastReceiver.TITLE;
+import static com.example.Wakim.broadcastReceiver.AlarmBroadcastReceiver.TUESDAY;
+import static com.example.Wakim.broadcastReceiver.AlarmBroadcastReceiver.WEDNESDAY;
 
 @Entity(tableName = "alarm_table")
 public class Alarm {
