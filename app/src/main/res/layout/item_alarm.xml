@@ -6,7 +6,7 @@
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="100dp"
         app:cardCornerRadius="6dp"
         app:cardElevation="6dp"
         android:layout_margin="15dp">
@@ -15,7 +15,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:padding="6dp">
+            android:layout_gravity="center"
+            android:padding="15dp">
 
             <TextView
                 android:id="@+id/item_alarm_time"
@@ -60,8 +61,9 @@
                 android:id="@+id/item_alarm_started"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
+                android:layout_gravity="center_vertical"
                 android:layout_weight="1"
-                android:layout_gravity="center_vertical"/>
+                android:thumbTint="@color/blue_variant"/>
 
         </LinearLayout>
 
