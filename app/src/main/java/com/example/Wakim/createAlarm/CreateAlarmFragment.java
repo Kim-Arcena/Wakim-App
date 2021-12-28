@@ -138,7 +138,7 @@ public class CreateAlarmFragment extends Fragment {
                 sat.isChecked(),
                 sun.isChecked()
         );
-        CreateAlarmViewModel.insert(alarm);
+        createAlarmViewModel.insert(alarm);
         alarm.schedule(getContext());
 
     }
