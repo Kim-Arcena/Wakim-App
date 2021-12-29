@@ -10,7 +10,6 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.Wakim.R;
-import com.example.Wakim.alarmsList.OntoggleAlarmListener;
 import com.example.Wakim.data.Alarm;
 
 import org.jetbrains.annotations.NotNull;
@@ -54,10 +53,10 @@ public class AlarmViewHolder extends RecyclerView.ViewHolder {
             alarmTitle.setText(String.format("%s | ID - %d ", "Alarm", alarm.getAlarmId()));
         }
         if (alarm.isRecurring()) {
-            alarmRecurring.setImageResource(R.drawable.ic_repeat_black_24dp);
+            alarmRecurring.setImageResource(R.drawable.ic_repeat_24dp);
             alarmRecurringDays.setText(alarm.getRecurringDaysString());
         } else {
-            alarmRecurring.setImageResource(R.drawable.ic_once_black_24dp);
+            alarmRecurring.setImageResource(R.drawable.ic_once_24dp);
             alarmRecurringDays.setText("Once");
         }
 

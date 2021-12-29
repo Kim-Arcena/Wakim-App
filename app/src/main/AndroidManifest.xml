@@ -34,6 +34,7 @@
             </intent-filter>
         </receiver>
         <service android:name=".service.AlarmService" />
+        <service android:name=".service.RescheduleAlarmsService" />
     </application>
 
 </manifest>
