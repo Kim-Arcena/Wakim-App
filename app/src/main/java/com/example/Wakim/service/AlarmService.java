@@ -15,7 +15,7 @@ import androidx.core.app.NotificationCompat;
 import com.example.Wakim.Activities.RingActivity;
 import com.example.Wakim.R;
 
-import static com.example.Wakim.Activities.App.CHANNEL_ID;
+import static com.example.Wakim.application.App.CHANNEL_ID;
 import static com.example.Wakim.broadcastReceiver.AlarmBroadcastReceiver.TITLE;
 
 public class AlarmService extends Service {

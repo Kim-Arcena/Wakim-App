@@ -16,12 +16,12 @@ import com.example.Wakim.data.Alarm;
 import org.jetbrains.annotations.NotNull;
 
 public class AlarmViewHolder extends RecyclerView.ViewHolder {
-    public Switch alarmStarted;
     //declare variables
     private TextView alarmTime;
     private ImageView alarmRecurring;
     private TextView alarmRecurringDays;
     private TextView alarmTitle;
+    Switch alarmStarted;
 
     //toggle listener
     private OntoggleAlarmListener listener;
@@ -49,8 +49,16 @@ public class AlarmViewHolder extends RecyclerView.ViewHolder {
 
         if (alarm.getTitle().length() != 0) {
             alarmTitle.setText(String.format("%s | %s | ID - %d ", alarm.getTitle(), alarm.getDescription(), alarm.getAlarmId()));
-        } else {
+        }
+        else {
             alarmTitle.setText(String.format("%s | ID - %d ", "Alarm", alarm.getAlarmId()));
+        }
+        if (alarm.isRecurring()) {
+            alarmRecurring.setImageResource(R.drawable.ic_repeat_black_24dp);
+            alarmRecurringDays.setText(alarm.getRecurringDaysString());
+        } else {
+            alarmRecurring.setImageResource(R.drawable.ic_once_black_24dp);
+            alarmRecurringDays.setText("Once");
         }
 
         alarmStarted.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {

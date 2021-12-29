@@ -181,7 +181,11 @@ public class Alarm {
         this.started = true;
     }
 
-    private String getRecurringDaysString() {
+    public String getRecurringDaysString() {
+        if(!recurring){
+            return null;
+        }
+
         String days = "";
         if(monday){
             days += "Mon ";

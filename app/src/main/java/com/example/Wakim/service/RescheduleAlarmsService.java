@@ -26,7 +26,8 @@ public class RescheduleAlarmsService extends LifecycleService {
     @org.jetbrains.annotations.Nullable
     @Override
     public IBinder onBind(@NonNull @NotNull Intent intent) {
-        return super.onBind(intent);
+        super.onBind(intent);
+        return null;
     }
 
     @Override

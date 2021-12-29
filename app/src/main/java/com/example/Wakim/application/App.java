@@ -1,4 +1,4 @@
-package com.example.Wakim.Activities;
+package com.example.Wakim.application;
 
 import android.app.Application;
 import android.app.Notification;
