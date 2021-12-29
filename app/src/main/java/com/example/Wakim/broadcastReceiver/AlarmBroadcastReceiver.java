@@ -93,12 +93,12 @@ public class AlarmBroadcastReceiver extends BroadcastReceiver {
             context.startService(intentService);
         }
     }
-
     private void startRescheduleAlarmsService(Context context) {
         Intent intentService = new Intent(context, RescheduleAlarmsService.class);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             context.startForegroundService(intentService);
-        } else {
+        }
+        else {
             context.startService(intentService);
         }
     }

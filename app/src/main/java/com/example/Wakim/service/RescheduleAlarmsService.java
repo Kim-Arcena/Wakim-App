@@ -16,22 +16,13 @@ import org.jetbrains.annotations.NotNull;
 import java.util.List;
 
 public class RescheduleAlarmsService extends LifecycleService {
-
     @Override
     public void onCreate() {
         super.onCreate();
     }
 
-    @Nullable
-    @org.jetbrains.annotations.Nullable
     @Override
-    public IBinder onBind(@NonNull @NotNull Intent intent) {
-        super.onBind(intent);
-        return null;
-    }
-
-    @Override
-    public int onStartCommand(@Nullable @org.jetbrains.annotations.Nullable Intent intent, int flags, int startId) {
+    public int onStartCommand(Intent intent, int flags, int startId) {
         super.onStartCommand(intent, flags, startId);
 
         AlarmRepository alarmRepository = new AlarmRepository(getApplication());
@@ -49,8 +40,16 @@ public class RescheduleAlarmsService extends LifecycleService {
 
         return START_STICKY;
     }
+
     @Override
     public void onDestroy() {
         super.onDestroy();
+    }
+
+    @Nullable
+    @Override
+    public IBinder onBind(Intent intent) {
+        super.onBind(intent);
+        return null;
     }
 }

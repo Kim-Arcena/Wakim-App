@@ -12,7 +12,7 @@ import android.os.IBinder;
 import androidx.annotation.Nullable;
 import androidx.core.app.NotificationCompat;
 
-import com.example.Wakim.Activities.RingActivity;
+import com.example.Wakim.activities.RingActivity;
 import com.example.Wakim.R;
 
 import static com.example.Wakim.application.App.CHANNEL_ID;
@@ -38,7 +38,7 @@ public class AlarmService extends Service {
 
         Notification notification = new NotificationCompat.Builder(this, CHANNEL_ID)
                 .setContentTitle(alarmTitle)
-                .setContentText("Ring Ring .. Ring Ring")
+                .setContentText("werk kna pls")
                 .setSmallIcon(R.drawable.ic_alarm_black_24dp)
                 .setContentIntent(pendingIntent)
                 .build();
