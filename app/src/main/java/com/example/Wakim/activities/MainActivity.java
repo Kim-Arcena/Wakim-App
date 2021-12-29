@@ -1,4 +1,4 @@
-package com.example.Wakim.Activities;
+package com.example.Wakim.activities;
 
 import android.os.Bundle;
 
