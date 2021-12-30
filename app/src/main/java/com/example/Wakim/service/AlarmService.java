@@ -6,7 +6,10 @@ import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
 import android.media.MediaPlayer;
+import android.os.Build;
 import android.os.IBinder;
+import android.os.VibrationEffect;
+import android.os.Vibrator;
 
 
 import androidx.annotation.Nullable;
@@ -20,6 +23,7 @@ import static com.example.Wakim.broadcastReceiver.AlarmBroadcastReceiver.TITLE;
 
 public class AlarmService extends Service {
     private MediaPlayer mediaPlayer;
+    private Vibrator vibrator;
 
     @Override
     public void onCreate() {
@@ -27,6 +31,8 @@ public class AlarmService extends Service {
 
         mediaPlayer = MediaPlayer.create(this, R.raw.alarm);
         mediaPlayer.setLooping(true);
+
+        vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
     }
 
     @Override
@@ -44,6 +50,16 @@ public class AlarmService extends Service {
                 .build();
 
         mediaPlayer.start();
+
+        long[] pattern = {100, 200, 100, 200};
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
+            VibrationEffect vibe = VibrationEffect.createWaveform(pattern, 0);
+            vibrator.vibrate(vibe);
+        }
+        else{
+            vibrator.vibrate(pattern, 1);
+        }
+
         startForeground(1, notification);
 
         return START_STICKY;
@@ -53,6 +69,7 @@ public class AlarmService extends Service {
     public void onDestroy() {
         super.onDestroy();
         mediaPlayer.stop();
+        vibrator.cancel();
     }
 
     @Nullable
