@@ -7,6 +7,7 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
 import android.Manifest;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.view.View;
@@ -16,6 +17,7 @@ import com.budiyev.android.codescanner.CodeScanner;
 import com.budiyev.android.codescanner.CodeScannerView;
 import com.budiyev.android.codescanner.DecodeCallback;
 import com.example.Wakim.R;
+import com.example.Wakim.service.AlarmService;
 import com.google.zxing.Result;
 
 public class RingActivity extends AppCompatActivity {
@@ -44,7 +46,11 @@ public class RingActivity extends AppCompatActivity {
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        Toast.makeText(RingActivity.this, result.getText(), Toast.LENGTH_SHORT).show();
+                        if(result.getText().equals("https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstley")){
+                            Intent intentService = new Intent(getApplicationContext(), AlarmService.class);
+                            getApplicationContext().stopService(intentService);
+                            finish();
+                        }
                     }
                 });
             }
