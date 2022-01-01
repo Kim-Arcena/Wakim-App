@@ -6,11 +6,4 @@
     <item
         android:id="@+id/delete_all_notes"
         android:title="Delete all notes" />
-    <item
-        android:id="@+id/searchbar"
-        android:icon="@drawable/ic_baseline_search_24"
-        android:title="Searchbar"
-        app:actionViewClass="androidx.appcompat.widget.SearchView"
-        app:showAsAction="always|collapseActionView" />
-
 </menu>
