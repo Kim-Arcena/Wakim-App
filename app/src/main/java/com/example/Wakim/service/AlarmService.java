@@ -57,7 +57,7 @@ public class AlarmService extends Service {
             vibrator.vibrate(vibe);
         }
         else{
-            vibrator.vibrate(pattern, 1);
+            vibrator.vibrate(pattern, -1);
         }
 
         startForeground(1, notification);
