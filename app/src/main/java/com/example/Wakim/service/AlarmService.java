@@ -5,11 +5,16 @@ import android.app.PendingIntent;
 import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
+import android.media.AudioAttributes;
+import android.media.AudioManager;
 import android.media.MediaPlayer;
+import android.media.RingtoneManager;
+import android.net.Uri;
 import android.os.Build;
 import android.os.IBinder;
 import android.os.VibrationEffect;
 import android.os.Vibrator;
+import android.util.Log;
 
 
 import androidx.annotation.Nullable;
@@ -17,6 +22,8 @@ import androidx.core.app.NotificationCompat;
 
 import com.example.Wakim.activities.RingActivity;
 import com.example.Wakim.R;
+
+import java.io.IOException;
 
 import static com.example.Wakim.application.App.CHANNEL_ID;
 import static com.example.Wakim.broadcastReceiver.AlarmBroadcastReceiver.TITLE;
@@ -49,9 +56,35 @@ public class AlarmService extends Service {
                 .setContentIntent(pendingIntent)
                 .build();
 
+        Uri alarmUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_ALARM);
+        if (alarmUri == null) {
+            alarmUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_RINGTONE);
+        }
+
+        if (alarmUri == null) {
+            Log.e("ringAlarm" , "alarmUri null. Unable to get default sound URI");
+        }
+
+        MediaPlayer mediaPlayer = new MediaPlayer();
+        // This is what sets the media type as alarm
+        // Thus, the sound will be influenced by alarm volume
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            mediaPlayer.setAudioAttributes(new AudioAttributes.Builder()
+                    .setUsage(AudioAttributes.USAGE_ALARM).build());
+        }
+
+        try {
+            mediaPlayer.setDataSource(getApplicationContext(), alarmUri);
+            mediaPlayer.prepare();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        // To continuously loop the alarm sound
+        mediaPlayer.setLooping(true);
         mediaPlayer.start();
 
-        long[] pattern = {100, 200, 100, 200};
+        long[] pattern = {1000, 500, 1000, 500};
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
             VibrationEffect vibe = VibrationEffect.createWaveform(pattern, 0);
             vibrator.vibrate(vibe);
