@@ -39,6 +39,10 @@
         </receiver>
         <service android:name=".service.AlarmService" />
         <service android:name=".service.RescheduleAlarmsService" />
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
     </application>
 
 </manifest>

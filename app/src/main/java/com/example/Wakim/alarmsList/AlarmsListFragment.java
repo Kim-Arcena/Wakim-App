@@ -64,6 +64,8 @@ public class AlarmsListFragment extends Fragment implements OntoggleAlarmListene
         });
     }
 
+
+
     /**
      * Called to have the fragment instantiate its user interface view.
      * This is optional, and non-graphical fragments can return null. This will be called between
