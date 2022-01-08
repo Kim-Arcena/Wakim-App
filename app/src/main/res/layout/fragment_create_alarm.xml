@@ -8,6 +8,12 @@
     android:clickable="true"
     android:focusableInTouchMode="true">
 
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="480dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/ic_layered_wave"/>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="wrap_content"
         android:layout_height="510dp"
@@ -18,19 +24,19 @@
         <LinearLayout
             android:id="@+id/fragment_createalarm_timePickerLayout"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="15dp"
-            android:layout_marginTop="12dp"
-            android:gravity="center_horizontal"
+            android:layout_height="210dp"
+            android:gravity="center"
             android:orientation="horizontal"
             tools:ignore="MissingConstraints"
-            tools:layout_editor_absoluteX="14dp">
+            tools:layout_editor_absoluteX="-4dp"
+            tools:layout_editor_absoluteY="2dp">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:fontFamily="@font/nunito_sans"
+                android:padding="8dp"
                 android:text="Alarm Time"
                 android:textAlignment="center"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
@@ -40,6 +46,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
+                android:foregroundGravity="center_vertical"
                 android:theme="@style/Theme.BigProject"
                 android:timePickerMode="spinner" />
         </LinearLayout>

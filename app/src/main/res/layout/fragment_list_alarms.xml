@@ -17,9 +17,9 @@
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="120dp"
             android:scaleType="centerCrop"
-            android:src="@drawable/ic_wave"
-            android:layout_marginTop="120dp"/>
+            android:src="@drawable/ic_wave" />
 
         <DigitalClock
             android:id="@+id/current_time"
