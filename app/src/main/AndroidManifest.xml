@@ -22,7 +22,7 @@
         <activity
             android:name=".activities.SplashScreen"
             android:exported="true"
-            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar">
+            android:theme="@style/Theme.BigProject">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

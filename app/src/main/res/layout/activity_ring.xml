@@ -21,6 +21,17 @@
         app:frameCornersSize="50dp"
         app:frameSize="0.75"
         app:frameThickness="2dp"
-        app:maskColor="#E2A8A5A5" />
+        app:maskColor="#77000000"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:text="Scan QR to Snooze"
+        android:textSize="17sp"
+        android:textColor="@color/white"
+        android:fontFamily="@font/nunito_sans"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="100dp"/>
 
 </RelativeLayout>
