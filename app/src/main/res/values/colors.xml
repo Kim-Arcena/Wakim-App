@@ -10,4 +10,6 @@
     <color name="actionBar_blue">#2A96FC</color>
     <color name="glow_blue">#0dccff</color>
     <color name="blue_variant">#1daeff</color>
+    <color name="light_glow_blue">#c9f6ff</color>
+    <color name="dark_glow_blue">#67e3fc</color>
 </resources>
