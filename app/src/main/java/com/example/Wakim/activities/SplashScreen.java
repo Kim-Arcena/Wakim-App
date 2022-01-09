@@ -13,6 +13,10 @@ import android.widget.TextView;
 
 import com.example.Wakim.R;
 
+/**
+ * The splash screen can be displayed at application startup,
+ * The splash screen is displayed as an undecorated window containing an image.
+ */
 public class SplashScreen extends AppCompatActivity {
     private  static  int SPLASH_SCREEN = 2000;
 
@@ -21,6 +25,10 @@ public class SplashScreen extends AppCompatActivity {
     ImageView imageLogo;
     TextView logo, slogan;
 
+    /**
+     * Displays the logo and the slogan with animations
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

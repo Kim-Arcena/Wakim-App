@@ -10,6 +10,9 @@ import com.example.Wakim.data.Alarm;
 
 import java.util.List;
 
+/**
+ * This interface defines the standard operations to be performed on an alarm model.
+ */
 @Dao
 public interface AlarmDao {
     @Insert

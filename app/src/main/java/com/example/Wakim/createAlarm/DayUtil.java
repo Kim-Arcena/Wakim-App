@@ -2,11 +2,13 @@ package com.example.Wakim.createAlarm;
 
 import java.util.Calendar;
 
+/**
+ * Class that returns String of the Day
+ */
 public final class DayUtil {
-    //converts Calendar.DAY_OF_WEEK - (int) to String
 
     /**
-     *
+     * This method converts Calendar.DAY_OF_WEEK - (int) to String
      * @param day
      * @return String of the day
      * @throws Exception

@@ -20,13 +20,27 @@ import com.example.Wakim.R;
 import com.example.Wakim.service.AlarmService;
 import com.google.zxing.Result;
 
+/**
+ * The Ring activity class will be displayed only if the user picks the push notification displayed
+ * when an alarm is active. When the notification is selected, the user is taken to an activity
+ * where a QR Code is ready to scan the code for snoozing.
+ */
 public class RingActivity extends AppCompatActivity {
 
     private CodeScanner mCodeScanner;
     private CodeScannerView mCodeScannerView;
 
+
+    /**
+     * This method would first ask the user for permission for using the camera.
+     * {@inheritDoc}
+     * <p>
+     * Perform initialization of all fragments.
+     *
+     * @param savedInstanceState
+     */
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
+    protected void onCreate(@Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ring);
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) == PackageManager.PERMISSION_DENIED){
@@ -36,10 +50,15 @@ public class RingActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * This method is used for scanning using Code scanner library for Android, based on ZXing.
+     *  {@Link https://github.com/yuriy-budiyev/code-scanner}
+     */
     private void startScanning() {
         mCodeScannerView = findViewById(R.id.scanner_view);
         mCodeScanner = new CodeScanner(this, mCodeScannerView);
-        mCodeScanner.startPreview();   // this line is very important, as you will not be able to scan your code without this, you will only get blank screen
+        mCodeScanner.startPreview();                               /* this line is very important, as the app will not be able to scan your code without this,
+                                                                    it will only show blank screen*/
         mCodeScanner.setDecodeCallback(new DecodeCallback() {
             @Override
             public void onDecoded(@NonNull final Result result) {
@@ -64,6 +83,12 @@ public class RingActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * This method checks whether the permission is granted or not, if yes, startScanning() will be called.
+     * @param requestCode
+     * @param permissions
+     * @param grantResults
+     */
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);

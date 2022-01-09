@@ -30,6 +30,11 @@ import java.util.Random;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
+/**
+ * This class follows the MVVM design pattern to insert instances of the Alarm model into
+ * the Room Database via a ViewModel and a Repository when a user captures submits a new alarm
+ */
+
 public class CreateAlarmFragment extends Fragment {
     @BindView(R.id.fragment_createalarm_timePicker) TimePicker timePicker;
     @BindView(R.id.fragment_createalarm_title) EditText title;
@@ -141,11 +146,18 @@ public class CreateAlarmFragment extends Fragment {
         return view;
     }
 
+    /**
+     * Method that hides the keyboard whenever the user click outside the textview
+     * @param view
+     */
     private void hideKeyboard(View view) {
         InputMethodManager inputMethodManager =(InputMethodManager)getContext().getSystemService(Activity.INPUT_METHOD_SERVICE);
         inputMethodManager.hideSoftInputFromWindow(view.getWindowToken(), 0);
     }
 
+    /**
+     *Method that takes the user input which will be used for the ROOM database
+     */
     private void scheduleAlarm() {
         int alarmId = new Random().nextInt(Integer.MAX_VALUE);
         Alarm alarm = new Alarm(

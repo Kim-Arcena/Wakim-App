@@ -28,8 +28,15 @@ import static com.example.Wakim.broadcastReceiver.AlarmBroadcastReceiver.TITLE;
 import static com.example.Wakim.broadcastReceiver.AlarmBroadcastReceiver.TUESDAY;
 import static com.example.Wakim.broadcastReceiver.AlarmBroadcastReceiver.WEDNESDAY;
 
+/**
+ * This class is use to model an alarm as records in the database/
+ */
 @Entity(tableName = "alarm_table")
 public class Alarm {
+    /**
+     *The variables defines the title, description, hour and minute that it will ring,
+     * if it schedule or not, or if it is recurring or not. If it is recurring, what days of the weeks it is active
+     */
     @PrimaryKey
     @NonNull
     private int alarmId;
@@ -131,6 +138,12 @@ public class Alarm {
         this.created = created;
     }
 
+    /**
+     * This schedule method should be invoked right after the alarm information are supplied in the CreateAlarmFragment method.
+     * @param context
+     * The schedule method creates an Intent for AlarmBroadcastReceiver and provides data about the Alarm as Intent Extras.
+     * It creates the PendingIntent using the Intent previously created.
+     */
     public void schedule(Context context) {
         AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
 
@@ -181,6 +194,10 @@ public class Alarm {
         this.started = true;
     }
 
+    /**
+     * This method is used whenever the Toast is shown after the alarm is created
+     * @return abbreviation of days
+     */
     public String getRecurringDaysString() {
         if(!recurring){
             return null;
@@ -211,6 +228,13 @@ public class Alarm {
         return days;
     }
 
+    /**
+     * This method is used to cancel the Alarm
+     * @param context
+     * It takes a reference to the AlarmManager by calling getSystemService(Context.ALARM_SERVICE).
+     * Then it create an Intent that uses the AlarmBroadcastReceiver and use the Intent to create a PendingIntent
+     * that has a reference to the alarm id that we when scheduling the alarm.
+     */
     public void cancelAlarm(Context context) {
         AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
         Intent intent = new Intent(context, AlarmBroadcastReceiver.class);

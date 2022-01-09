@@ -14,6 +14,9 @@ import com.example.Wakim.data.Alarm;
 
 import org.jetbrains.annotations.NotNull;
 
+/**
+ * This class displays or binds the records from the database to the user Interface
+ */
 public class AlarmViewHolder extends RecyclerView.ViewHolder {
     //declare variables
     private TextView alarmTime;
@@ -25,7 +28,13 @@ public class AlarmViewHolder extends RecyclerView.ViewHolder {
     //toggle listener
     private OntoggleAlarmListener listener;
 
-
+    /**
+     * Extend this class if you want to hold the child views of a given view, i.e it can be used to hold the
+     * views of a Fragment after inflating it's layout. Annotate the view fields with ViewId, i.e @ViewId(R.id.textView1).
+     * It will look for the viewId's in the given parent view and will assign the views to the annotated fields of the subclass.
+     * @param itemView
+     * @param listener
+     */
     public AlarmViewHolder(@NonNull @NotNull View itemView, OntoggleAlarmListener listener) {
         super(itemView);
         //View binding
@@ -39,6 +48,11 @@ public class AlarmViewHolder extends RecyclerView.ViewHolder {
 
     }
 
+
+    /**
+     * This method is called for each ViewHolder to bind it to the adapter. This is where we will pass our data to our ViewHolder.
+     * @param alarm
+     */
     public void bind(Alarm alarm) {
         //we will bind the alarms to the item_alarm by taking the data from the alarm class
         String alarmText = String.format("%02d:%02d", alarm.getHour()%12, alarm.getMinute());

@@ -31,60 +31,26 @@ import static com.example.Wakim.broadcastReceiver.AlarmBroadcastReceiver.TITLE;
 public class AlarmService extends Service {
     private MediaPlayer mediaPlayer;
     private Vibrator vibrator;
-
     @Override
     public void onCreate() {
         super.onCreate();
-
         mediaPlayer = MediaPlayer.create(this, R.raw.alarm);
         mediaPlayer.setLooping(true);
-
         vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
     }
-
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
         Intent notificationIntent = new Intent(this, RingActivity.class);
         PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, notificationIntent, 0);
-
         String alarmTitle = String.format("%s Alarm", intent.getStringExtra(TITLE));
-
         Notification notification = new NotificationCompat.Builder(this, CHANNEL_ID)
                 .setContentTitle(alarmTitle)
                 .setContentText("werk kna pls")
                 .setSmallIcon(R.drawable.ic_alarm_black_24dp)
                 .setContentIntent(pendingIntent)
                 .build();
-
-        Uri alarmUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_ALARM);
-        if (alarmUri == null) {
-            alarmUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_RINGTONE);
-        }
-
-        if (alarmUri == null) {
-            Log.e("ringAlarm" , "alarmUri null. Unable to get default sound URI");
-        }
-
-        MediaPlayer mediaPlayer = new MediaPlayer();
-        // This is what sets the media type as alarm
-        // Thus, the sound will be influenced by alarm volume
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            mediaPlayer.setAudioAttributes(new AudioAttributes.Builder()
-                    .setUsage(AudioAttributes.USAGE_ALARM).build());
-        }
-
-        try {
-            mediaPlayer.setDataSource(getApplicationContext(), alarmUri);
-            mediaPlayer.prepare();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        // To continuously loop the alarm sound
-        mediaPlayer.setLooping(true);
         mediaPlayer.start();
-
-        long[] pattern = {1000, 500, 1000, 500};
+        long[] pattern = {100, 200, 100, 200};
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
             VibrationEffect vibe = VibrationEffect.createWaveform(pattern, 0);
             vibrator.vibrate(vibe);

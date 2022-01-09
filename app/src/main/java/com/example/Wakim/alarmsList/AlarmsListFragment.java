@@ -24,12 +24,22 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
+/**
+ * This class displays all of the Alarms in a RecyclerView, which includes information about the Alarm timings,
+ * the alarm title, whether it is repeating or not, which days of the week the alarm will sound,
+ * and a Toggle that indicates whether the alarm is active or not.
+ */
 public class AlarmsListFragment extends Fragment implements OntoggleAlarmListener {
     private AlarmRecyclerViewAdapter alarmRecyclerViewAdapter;
     private AlarmsListViewModel alarmsListViewModel;
     private RecyclerView alarmsRecyclerView;
     private FloatingActionButton addAlarm;
+
     /**
+     * This method obtains the Alarm records for display in the RecyclerView by utilizing an AlarmsListViewModel that
+     * searches the AlarmRepository and a Room database for the alarms. When retrieving the Alarms data, an observer is added so that the
+     * RecyclerView is automatically refreshed if the Alarms data in the Room database changes.
+     *
      * Called to do initial creation of a fragment.  This is called after
      * {@link #onAttach(Context)} and before
      * {@link #onCreateView } w(LayoutInflater, ViewGroup, Bundle)}.
@@ -67,6 +77,8 @@ public class AlarmsListFragment extends Fragment implements OntoggleAlarmListene
 
 
     /**
+     * This method navigates the user to the CreateAlarmFragment if the user selects the button to add an alarm.
+     *
      * Called to have the fragment instantiate its user interface view.
      * This is optional, and non-graphical fragments can return null. This will be called between
      * {@link #onCreate(Bundle)} and {@link #onViewCreated(View, Bundle)}.
@@ -110,6 +122,10 @@ public class AlarmsListFragment extends Fragment implements OntoggleAlarmListene
         return view;
     }
 
+    /**
+     * This class is has a toggle listener that, depending on the state of the alarm, will either schedule or cancel the alarm.
+     * @param alarm
+     */
     @Override
     public void onToggle(Alarm alarm) {
         if(alarm.isStarted()){
