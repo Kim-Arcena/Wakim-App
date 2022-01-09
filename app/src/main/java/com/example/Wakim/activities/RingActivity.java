@@ -46,7 +46,7 @@ public class RingActivity extends AppCompatActivity {
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        if(result.getText().equals("https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstley")){
+                        if(result.getText().equals("https://qrco.de/Wakim-App") || result.getText().equals("https://qrco.de/WakimApp")){
                             Intent intentService = new Intent(getApplicationContext(), AlarmService.class);
                             getApplicationContext().stopService(intentService);
                             finish();
