@@ -19,9 +19,9 @@ import java.util.List;
 
 public class AlarmRecyclerViewAdapter extends RecyclerView.Adapter<AlarmViewHolder> {
     private List<Alarm> alarms;
-    private OntoggleAlarmListener listener;
+    private OnManageListener listener;
     
-    public AlarmRecyclerViewAdapter(OntoggleAlarmListener listener){
+    public AlarmRecyclerViewAdapter(OnManageListener listener){
         this.alarms = new ArrayList<Alarm>();
         this.listener = listener;
     }

@@ -2,6 +2,7 @@ package com.example.Wakim.data;
 
 import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
+import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.Query;
 import androidx.room.Update;
@@ -26,4 +27,7 @@ public interface AlarmDao {
 
     @Update
     void update(Alarm alarm);
+
+    @Delete
+    void delete(Alarm alarm);
 }

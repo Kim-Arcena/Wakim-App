@@ -68,6 +68,14 @@
 
         </LinearLayout>
 
+        <Button
+            android:id="@+id/item_alarm_delete_button"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_margin="10dp"
+            android:layout_gravity="right|top"
+            android:background="@drawable/ic_baseline_remove_24" />
+
     </androidx.cardview.widget.CardView>
 
 

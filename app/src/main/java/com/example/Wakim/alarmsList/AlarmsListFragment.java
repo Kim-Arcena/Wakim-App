@@ -29,7 +29,7 @@ import java.util.List;
  * the alarm title, whether it is repeating or not, which days of the week the alarm will sound,
  * and a Toggle that indicates whether the alarm is active or not.
  */
-public class AlarmsListFragment extends Fragment implements OntoggleAlarmListener {
+public class AlarmsListFragment extends Fragment implements OnManageListener {
     private AlarmRecyclerViewAdapter alarmRecyclerViewAdapter;
     private AlarmsListViewModel alarmsListViewModel;
     private RecyclerView alarmsRecyclerView;
@@ -136,5 +136,11 @@ public class AlarmsListFragment extends Fragment implements OntoggleAlarmListene
             alarm.schedule(getContext());
             alarmsListViewModel.update(alarm);
         }
+    }
+
+    @Override
+    public void onDelete(Alarm alarm) {
+        alarm.cancelAlarm(getContext());
+        alarmsListViewModel.delete(alarm);
     }
 }

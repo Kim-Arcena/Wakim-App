@@ -1,6 +1,7 @@
 package com.example.Wakim.alarmsList;
 
 import android.view.View;
+import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.Switch;
@@ -23,10 +24,11 @@ public class AlarmViewHolder extends RecyclerView.ViewHolder {
     private ImageView alarmRecurring;
     private TextView alarmRecurringDays;
     private TextView alarmTitle;
+    private Button alarmDeleteButton;
     Switch alarmStarted;
 
     //toggle listener
-    private OntoggleAlarmListener listener;
+    private OnManageListener listener;
 
     /**
      * Extend this class if you want to hold the child views of a given view, i.e it can be used to hold the
@@ -35,7 +37,7 @@ public class AlarmViewHolder extends RecyclerView.ViewHolder {
      * @param itemView
      * @param listener
      */
-    public AlarmViewHolder(@NonNull @NotNull View itemView, OntoggleAlarmListener listener) {
+    public AlarmViewHolder(@NonNull @NotNull View itemView, OnManageListener listener) {
         super(itemView);
         //View binding
         alarmTime = itemView.findViewById(R.id.item_alarm_time);
@@ -43,6 +45,7 @@ public class AlarmViewHolder extends RecyclerView.ViewHolder {
         alarmRecurringDays = itemView.findViewById(R.id.item_alarm_recurringDays);
         alarmTitle = itemView.findViewById(R.id.item_alarm_title);
         alarmStarted = itemView.findViewById(R.id.item_alarm_started);
+        alarmDeleteButton = itemView.findViewById(R.id.item_alarm_delete_button);
 
         this.listener = listener;
 
@@ -55,7 +58,7 @@ public class AlarmViewHolder extends RecyclerView.ViewHolder {
      */
     public void bind(Alarm alarm) {
         //we will bind the alarms to the item_alarm by taking the data from the alarm class
-        String alarmText = String.format("%02d:%02d", alarm.getHour()%12, alarm.getMinute());
+        String alarmText = String.format("%02d:%02d", alarm.getHour(), alarm.getMinute());
 
         alarmTime.setText(alarmText);
         alarmStarted.setChecked(alarm.isStarted());
@@ -78,6 +81,13 @@ public class AlarmViewHolder extends RecyclerView.ViewHolder {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 listener.onToggle(alarm);
+            }
+        });
+
+        alarmDeleteButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                listener.onDelete(alarm);
             }
         });
     }
