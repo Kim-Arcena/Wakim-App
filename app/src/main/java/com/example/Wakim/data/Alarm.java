@@ -171,7 +171,7 @@ public class Alarm {
 
         //check if the alarm has already passed. If it does, increment day by 1
         if (calendar.getTimeInMillis() <= System.currentTimeMillis()) {
-            calendar.set(Calendar.DAY_OF_MONTH, calendar.get(Calendar.DAY_OF_MONTH + 1));
+            calendar.set(Calendar.DAY_OF_MONTH, calendar.get(Calendar.DAY_OF_MONTH) + 1);
         }
         if (!recurring) {
             String toastText = null;
