@@ -64,10 +64,10 @@ public class AlarmViewHolder extends RecyclerView.ViewHolder {
         alarmStarted.setChecked(alarm.isStarted());
 
         if (alarm.getTitle().length() != 0) {
-            alarmTitle.setText(String.format("%s | %s | ID - %d ", alarm.getTitle(), alarm.getDescription(), alarm.getAlarmId()));
+            alarmTitle.setText(String.format("%s\n%15.15s ...", alarm.getTitle(), alarm.getDescription()));
         }
         else {
-            alarmTitle.setText(String.format("%s | ID - %d ", "Alarm", alarm.getAlarmId()));
+            alarmTitle.setText(String.format("%s\n%s ", "Alarm", "No Description"));
         }
         if (alarm.isRecurring()) {
             alarmRecurring.setImageResource(R.drawable.ic_repeat_24dp);

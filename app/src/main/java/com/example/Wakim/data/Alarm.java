@@ -243,7 +243,7 @@ public class Alarm {
         this.started = false;
 
         //notify user via toast
-        String toastText = String.format("Cancelled Alarm ID - %s scheduled at %02d:%02d", alarmId, hour%12, minute);
+        String toastText = String.format("Cancelled Alarm scheduled at %02d:%02d", hour%12, minute);
         Toast.makeText(context, toastText, Toast.LENGTH_LONG).show();
         Log.i("cancel", toastText);
 
