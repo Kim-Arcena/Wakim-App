@@ -64,7 +64,7 @@ public class AlarmViewHolder extends RecyclerView.ViewHolder {
         alarmStarted.setChecked(alarm.isStarted());
 
         if (alarm.getTitle().length() != 0) {
-            alarmTitle.setText(String.format("%s\n%15.15s ...", alarm.getTitle(), alarm.getDescription()));
+            alarmTitle.setText(String.format("%s\n%15s ...", alarm.getTitle(), alarm.getDescription()));
         }
         else {
             alarmTitle.setText(String.format("%s\n%s ", "Alarm", "No Description"));
