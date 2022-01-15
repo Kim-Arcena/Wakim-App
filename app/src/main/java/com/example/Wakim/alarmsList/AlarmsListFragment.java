@@ -12,13 +12,13 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.LifecycleObserver;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.lifecycle.ViewModelProviders;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.Wakim.data.Alarm;
 import com.example.Wakim.R;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.example.Wakim.data.Alarm;
+import com.example.Wakim.databinding.FragmentListalarmsBinding;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -32,8 +32,7 @@ import java.util.List;
 public class AlarmsListFragment extends Fragment implements OnManageListener {
     private AlarmRecyclerViewAdapter alarmRecyclerViewAdapter;
     private AlarmsListViewModel alarmsListViewModel;
-    private RecyclerView alarmsRecyclerView;
-    private FloatingActionButton addAlarm;
+    private FragmentListalarmsBinding binding;
 
     /**
      * This method obtains the Alarm records for display in the RecyclerView by utilizing an AlarmsListViewModel that
@@ -63,13 +62,10 @@ public class AlarmsListFragment extends Fragment implements OnManageListener {
         super.onCreate(savedInstanceState);
 
         alarmRecyclerViewAdapter = new AlarmRecyclerViewAdapter(this);
-        alarmsListViewModel = new ViewModelProvider(this).get(AlarmsListViewModel.class);
-        alarmsListViewModel.getAlarmsLiveData().observe(this, new Observer<List<Alarm>>() {
-            @Override
-            public void onChanged(List<Alarm> alarms) {
-                if (alarms != null) {
-                    alarmRecyclerViewAdapter.setAlarms(alarms);
-                }
+        alarmsListViewModel = ViewModelProviders.of(this).get(AlarmsListViewModel.class);
+        alarmsListViewModel.getAlarmsLiveData().observe(this, alarms -> {
+            if (alarms != null) {
+                alarmRecyclerViewAdapter.setAlarms(alarms);
             }
         });
     }
@@ -105,21 +101,22 @@ public class AlarmsListFragment extends Fragment implements OnManageListener {
     @Override
     public View onCreateView(@NonNull @NotNull LayoutInflater inflater, @Nullable @org.jetbrains.annotations.Nullable ViewGroup container,
                              @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_list_alarms, container, false);
+        binding = FragmentListalarmsBinding.inflate(inflater, container, false);
+        View view = binding.getRoot();
 
-        alarmsRecyclerView = view.findViewById(R.id.fragment_listalarms_recylerView);
-        alarmsRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        alarmsRecyclerView.setAdapter(alarmRecyclerViewAdapter);
+        binding.fragmentListalarmsRecylerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        binding.fragmentListalarmsRecylerView.setAdapter(alarmRecyclerViewAdapter);
 
-        addAlarm = view.findViewById(R.id.floating_action_bar);
-        addAlarm.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Navigation.findNavController(v).navigate(R.id.action_alarmsListFragment_to_createAlarmFragment);
-            }
-        });
+        binding.fragmentListalarmsAddAlarm.setOnClickListener(
+                v -> Navigation.findNavController(v).navigate(R.id.action_alarmsListFragment_to_createAlarmFragment));
 
         return view;
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        binding = null;
     }
 
     /**
@@ -128,19 +125,19 @@ public class AlarmsListFragment extends Fragment implements OnManageListener {
      */
     @Override
     public void onToggle(Alarm alarm) {
-        if(alarm.isStarted()){
-            alarm.cancelAlarm(getContext());
+        if (alarm.isStarted()) {
+            alarm.cancelAlarm(requireContext());
             alarmsListViewModel.update(alarm);
         }
-        else{
-            alarm.schedule(getContext());
+        else {
+            alarm.schedule(requireContext());
             alarmsListViewModel.update(alarm);
         }
     }
 
     @Override
     public void onDelete(Alarm alarm) {
-        alarm.cancelAlarm(getContext());
-        alarmsListViewModel.delete(alarm);
+        alarm.cancelAlarm(requireContext());
+        alarmsListViewModel.delete(alarm);;
     }
 }

@@ -10,16 +10,18 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.Wakim.data.Alarm;
 import com.example.Wakim.R;
+import com.example.Wakim.databinding.ItemAlarmBinding;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
 
 public class AlarmRecyclerViewAdapter extends RecyclerView.Adapter<AlarmViewHolder> {
     private List<Alarm> alarms;
-    private OnManageListener listener;
+    private final OnManageListener listener;
     
     public AlarmRecyclerViewAdapter(OnManageListener listener){
         this.alarms = new ArrayList<Alarm>();
@@ -52,8 +54,8 @@ public class AlarmRecyclerViewAdapter extends RecyclerView.Adapter<AlarmViewHold
     @Override
     public AlarmViewHolder onCreateViewHolder(@NonNull @NotNull ViewGroup parent, int viewType) {
         //inflate View
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_alarm,parent,false);
-        return new AlarmViewHolder(view, listener);
+        ItemAlarmBinding binding = ItemAlarmBinding.inflate(LayoutInflater.from(parent.getContext()), parent, false);
+        return new AlarmViewHolder(binding, listener);
     }
 
     /**
@@ -100,6 +102,6 @@ public class AlarmRecyclerViewAdapter extends RecyclerView.Adapter<AlarmViewHold
     @Override
     public void onViewRecycled(@NonNull AlarmViewHolder holder) {
         super.onViewRecycled(holder);
-        holder.alarmStarted.setOnCheckedChangeListener(null);
+        holder.onViewRecycled();
     }
 }

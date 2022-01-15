@@ -44,7 +44,7 @@
     </androidx.recyclerview.widget.RecyclerView>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/floating_action_bar"
+        android:id="@+id/fragment_listalarms_addAlarm"
         android:layout_width="440dp"
         android:layout_height="wrap_content"
         android:backgroundTint="@color/actionBar_blue"

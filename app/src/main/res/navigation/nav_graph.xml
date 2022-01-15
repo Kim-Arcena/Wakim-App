@@ -8,7 +8,7 @@
         android:id="@+id/alarmsListFragment"
         android:name="com.example.Wakim.alarmsList.AlarmsListFragment"
         android:label="fragment_allalarms"
-        tools:layout="@layout/fragment_list_alarms" >
+        tools:layout="@layout/fragment_listalarms" >
         <action
             android:id="@+id/action_alarmsListFragment_to_createAlarmFragment"
             app:destination="@id/createAlarmFragment" />

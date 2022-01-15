@@ -58,10 +58,6 @@ dependencies {
     // optional - Test helpers
     testImplementation "androidx.room:room-testing:$room_version"
 
-    //butterknife dependencies
-    implementation 'com.jakewharton:butterknife:10.2.3'
-    annotationProcessor 'com.jakewharton:butterknife-compiler:10.2.3'
-
     //qr scanner dependencies
     implementation 'com.budiyev.android:code-scanner:2.1.0'
 }
