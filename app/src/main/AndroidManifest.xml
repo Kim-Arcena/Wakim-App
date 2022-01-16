@@ -15,10 +15,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.BigProject">
-        <activity android:name=".activities.RingActivity">
-        </activity>
-        <activity android:name=".activities.MainActivity">
-        </activity>
+        <activity android:name=".activities.ScheduleAlarmActivity"></activity>
+        <activity android:name=".activities.RingActivity"></activity>
+        <activity android:name=".activities.MainActivity"></activity>
         <activity
             android:name=".activities.SplashScreen"
             android:exported="true"
@@ -37,6 +36,7 @@
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
             </intent-filter>
         </receiver>
+
         <service android:name=".service.AlarmService" />
         <service android:name=".service.RescheduleAlarmsService" />
 

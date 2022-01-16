@@ -98,7 +98,7 @@ public class CreateAlarmFragment extends Fragment {
 
         binding.fragmentCreatealarmScheduleAlarm.setOnClickListener(v -> {
             scheduleAlarm();
-            Navigation.findNavController(v).navigate(R.id.action_createAlarmFragment_to_alarmsListFragment);
+            getActivity().finish();
         });
 
         binding.fragmentCreatealarmTitle.setOnFocusChangeListener(new View.OnFocusChangeListener() {

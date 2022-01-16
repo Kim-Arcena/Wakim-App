@@ -1,6 +1,7 @@
 package com.example.Wakim.alarmsList;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,6 +18,7 @@ import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.example.Wakim.R;
+import com.example.Wakim.activities.ScheduleAlarmActivity;
 import com.example.Wakim.data.Alarm;
 import com.example.Wakim.databinding.FragmentListalarmsBinding;
 
@@ -107,10 +109,13 @@ public class AlarmsListFragment extends Fragment implements OnManageListener {
         binding.fragmentListalarmsRecylerView.setLayoutManager(new LinearLayoutManager(getContext()));
         binding.fragmentListalarmsRecylerView.setAdapter(alarmRecyclerViewAdapter);
 
-        binding.fragmentListalarmsAddAlarm.setOnClickListener(
-                v -> Navigation.findNavController(v).navigate(R.id.action_alarmsListFragment_to_createAlarmFragment));
+        binding.fragmentListalarmsAddAlarm.setOnClickListener(v -> startScheduleAlarmActivity());
 
         return view;
+    }
+
+    private void startScheduleAlarmActivity() {
+        startActivity(new Intent(getContext(), ScheduleAlarmActivity.class));
     }
 
     @Override
