@@ -1,4 +1,4 @@
-package com.example.Wakim.createAlarm;
+package com.example.Wakim.scheduleAlarm;
 
 import java.util.Calendar;
 

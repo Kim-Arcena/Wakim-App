@@ -1,4 +1,4 @@
-package com.example.Wakim.createAlarm;
+package com.example.Wakim.scheduleAlarm;
 
 import android.app.Activity;
 import android.content.Context;
@@ -8,19 +8,15 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.LifecycleObserver;
-import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelProviders;
-import androidx.navigation.Navigation;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
-import android.widget.CompoundButton;
 
 import com.example.Wakim.data.Alarm;
-import com.example.Wakim.R;
-import com.example.Wakim.databinding.FragmentCreatealarmBinding;
+import com.example.Wakim.databinding.FragmentSchedulealarmBinding;
 
 import java.util.Random;
 
@@ -30,9 +26,9 @@ import java.util.Random;
  * the Room Database via a ViewModel and a Repository when a user captures submits a new alarm
  */
 
-public class CreateAlarmFragment extends Fragment {
-    private FragmentCreatealarmBinding binding;
-    private CreateAlarmViewModel createAlarmViewModel;
+public class ScheduleAlarmFragment extends Fragment {
+    private FragmentSchedulealarmBinding binding;
+    private ScheduleAlarmViewModel createAlarmViewModel;
     /**
      * Called to do initial creation of a fragment.  This is called after
      * {@link #onAttach(Context)} and before
@@ -56,7 +52,7 @@ public class CreateAlarmFragment extends Fragment {
     public void onCreate(@Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        createAlarmViewModel = ViewModelProviders.of(this).get(CreateAlarmViewModel.class);
+        createAlarmViewModel = ViewModelProviders.of(this).get(ScheduleAlarmViewModel.class);
     }
 
 
@@ -85,7 +81,7 @@ public class CreateAlarmFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        binding = FragmentCreatealarmBinding.inflate(inflater, container, false);
+        binding = FragmentSchedulealarmBinding.inflate(inflater, container, false);
         View view = binding.getRoot();
 
         binding.fragmentCreatealarmRecurring.setOnCheckedChangeListener((buttonView, isChecked) -> {

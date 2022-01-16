@@ -1,4 +1,4 @@
-package com.example.Wakim.createAlarm;
+package com.example.Wakim.scheduleAlarm;
 
 import android.app.Application;
 
@@ -11,14 +11,14 @@ import com.example.Wakim.data.AlarmRepository;
 /**
  * This class is used to call the insert method on the AlarmRepository and passes the Alarm.
  */
-public class CreateAlarmViewModel extends AndroidViewModel {
+public class ScheduleAlarmViewModel extends AndroidViewModel {
     private static AlarmRepository alarmRepository;
 
     /**
      * Method that creates a view model for the application
      * @param application
      */
-    public CreateAlarmViewModel(@NonNull Application application) {
+    public ScheduleAlarmViewModel(@NonNull Application application) {
         super(application);
 
         alarmRepository = new AlarmRepository(application);

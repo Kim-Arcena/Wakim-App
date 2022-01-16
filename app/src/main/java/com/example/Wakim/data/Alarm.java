@@ -13,7 +13,7 @@ import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
 import com.example.Wakim.broadcastReceiver.AlarmBroadcastReceiver;
-import com.example.Wakim.createAlarm.DayUtil;
+import com.example.Wakim.scheduleAlarm.DayUtil;
 
 import java.util.Calendar;
 

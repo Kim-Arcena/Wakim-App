@@ -15,7 +15,7 @@
     </fragment>
     <fragment
         android:id="@+id/createAlarmFragment"
-        android:name="com.example.Wakim.createAlarm.CreateAlarmFragment"
+        android:name="com.example.Wakim.scheduleAlarm.ScheduleAlarmFragment"
         android:label="CreateAlarmFragment" >
         <action
             android:id="@+id/action_createAlarmFragment_to_alarmsListFragment"

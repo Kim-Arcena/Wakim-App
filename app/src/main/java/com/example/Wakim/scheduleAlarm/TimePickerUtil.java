@@ -1,4 +1,4 @@
-package com.example.Wakim.createAlarm;
+package com.example.Wakim.scheduleAlarm;
 
 import android.os.Build;
 import android.widget.TimePicker;
