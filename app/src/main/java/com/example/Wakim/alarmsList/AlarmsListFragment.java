@@ -11,8 +11,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.LifecycleObserver;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -23,8 +21,6 @@ import com.example.Wakim.data.Alarm;
 import com.example.Wakim.databinding.FragmentListalarmsBinding;
 
 import org.jetbrains.annotations.NotNull;
-
-import java.util.List;
 
 /**
  * This class displays all of the Alarms in a RecyclerView, which includes information about the Alarm timings,
@@ -144,5 +140,16 @@ public class AlarmsListFragment extends Fragment implements OnManageListener {
     public void onDelete(Alarm alarm) {
         alarm.cancelAlarm(requireContext());
         alarmsListViewModel.delete(alarm);;
+    }
+
+    @Override
+    public void onEdit(Alarm alarm) {
+        startScheduleAlarmActivity(alarm);
+    }
+
+    private void startScheduleAlarmActivity(Alarm alarm) {
+        Intent intent = new Intent(getContext(), ScheduleAlarmActivity.class);
+        intent.putExtra("alarmId", alarm.getAlarmId());
+        startActivity(intent);
     }
 }

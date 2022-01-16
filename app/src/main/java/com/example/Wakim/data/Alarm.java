@@ -48,27 +48,11 @@ public class Alarm {
 
     private long created;
 
-    public Alarm(int alarmId, int hour, int minute, String title, String description, long created, boolean started, boolean recurring,
-                 boolean monday, boolean tuesday, boolean wednesday, boolean thursday, boolean friday, boolean saturday, boolean sunday) {
+    public Alarm(int alarmId, int hour, int minute) {
         this.alarmId = alarmId;
         this.hour = hour;
         this.minute = minute;
-        this.started = started;
-
-        this.recurring = recurring;
-
-        this.monday = monday;
-        this.tuesday = tuesday;
-        this.wednesday = wednesday;
-        this.thursday = thursday;
-        this.friday = friday;
-        this.saturday = saturday;
-        this.sunday = sunday;
-
-        this.title = title;
-        this.description = description;
-
-        this.created = created;
+        this.created = System.currentTimeMillis();
     }
 
     public int getHour() {
@@ -121,6 +105,60 @@ public class Alarm {
 
     public boolean isSunday() {
         return sunday;
+    }
+
+    public void setHour(int hour) {
+        this.hour = hour;
+    }
+
+    public void setMinute(int minute) {
+        this.minute = minute;
+    }
+
+    public void setStarted(boolean started) {
+        this.started = started;
+    }
+
+    public void setRecurring(boolean recurring) {
+        this.recurring = recurring;
+        if (!recurring) {
+            monday = tuesday = wednesday = thursday = friday = saturday = sunday = false;
+        }
+    }
+
+    public void setMonday(boolean monday) {
+        this.monday = monday;
+    }
+
+    public void setTuesday(boolean tuesday) {
+        this.tuesday = tuesday;
+    }
+
+    public void setWednesday(boolean wednesday) {
+        this.wednesday = wednesday;
+    }
+
+    public void setThursday(boolean thursday) {
+        this.thursday = thursday;
+    }
+
+    public void setFriday(boolean friday) {
+        this.friday = friday;
+    }
+
+    public void setSaturday(boolean saturday) {
+        this.saturday = saturday;
+    }
+
+    public void setSunday(boolean sunday) {
+        this.sunday = sunday;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public String getTitle() {

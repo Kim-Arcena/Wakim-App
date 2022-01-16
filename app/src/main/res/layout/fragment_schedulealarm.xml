@@ -42,7 +42,7 @@
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
 
             <TimePicker
-                android:id="@+id/fragment_createalarm_timePicker"
+                android:id="@+id/time_picker"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -105,43 +105,43 @@
                 android:orientation="horizontal">
 
                 <CheckBox
-                    android:id="@+id/fragment_createalarm_checkSun"
+                    android:id="@+id/on_Sun"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="S" />
 
                 <CheckBox
-                    android:id="@+id/fragment_createalarm_checkMon"
+                    android:id="@+id/on_Mon"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="M" />
 
                 <CheckBox
-                    android:id="@+id/fragment_createalarm_checkTue"
+                    android:id="@+id/on_Tue"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="T" />
 
                 <CheckBox
-                    android:id="@+id/fragment_createalarm_checkWed"
+                    android:id="@+id/on_Wed"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="W" />
 
                 <CheckBox
-                    android:id="@+id/fragment_createalarm_checkThu"
+                    android:id="@+id/on_Thu"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Th" />
 
                 <CheckBox
-                    android:id="@+id/fragment_createalarm_checkFri"
+                    android:id="@+id/on_Fri"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="F" />
 
                 <CheckBox
-                    android:id="@+id/fragment_createalarm_checkSat"
+                    android:id="@+id/on_Sat"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="S" />

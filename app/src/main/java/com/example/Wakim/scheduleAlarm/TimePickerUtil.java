@@ -28,4 +28,20 @@ public final class TimePickerUtil {
         }
     }
 
+    public static void setTimePickerHour(TimePicker timePicker, int hour) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            timePicker.setHour(hour);
+        } else {
+            timePicker.setCurrentHour(hour);
+        }
+    }
+
+    public static void setTimePickerMinute(TimePicker timePicker, int minute) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            timePicker.setMinute(minute);
+        } else {
+            timePicker.setCurrentMinute(minute);
+        }
+    }
+
 }

@@ -84,12 +84,28 @@ public class ScheduleAlarmFragment extends Fragment {
         binding = FragmentSchedulealarmBinding.inflate(inflater, container, false);
         View view = binding.getRoot();
 
-        binding.fragmentCreatealarmRecurring.setOnCheckedChangeListener((buttonView, isChecked) -> {
-            if (isChecked) {
-                binding.fragmentCreatealarmRecurringOptions.setVisibility(View.VISIBLE);
-            } else {
-                binding.fragmentCreatealarmRecurringOptions.setVisibility(View.GONE);
-            }
+        int alarmId = getActivity().getIntent().getIntExtra("alarmId", -1);
+        createAlarmViewModel.getAlarm(alarmId).observe(getViewLifecycleOwner(), alarm -> {
+            TimePickerUtil.setTimePickerHour(binding.timePicker, alarm.getHour());
+            TimePickerUtil.setTimePickerMinute(binding.timePicker, alarm.getMinute());
+            binding.fragmentCreatealarmTitle.setText(alarm.getTitle());
+            binding.fragmentCreatealarmDescription.setText(alarm.getDescription());
+            binding.fragmentCreatealarmDescription.setText(alarm.getDescription());
+            binding.fragmentCreatealarmRecurring.setChecked(alarm.isRecurring());
+            binding.fragmentCreatealarmRecurringOptions.setVisibility(alarm.isRecurring() ? View.VISIBLE : View.GONE);
+            binding.fragmentCreatealarmRecurring.setOnCheckedChangeListener((v, isChecked) -> {
+                alarm.setRecurring(isChecked);
+                binding.fragmentCreatealarmRecurringOptions.setVisibility(isChecked ? View.VISIBLE : View.GONE);
+                bindWeekDays(alarm);
+            });
+            bindWeekDays(alarm);
+            binding.onMon.setOnCheckedChangeListener((v, isChecked) -> alarm.setMonday(isChecked));
+            binding.onTue.setOnCheckedChangeListener((v, isChecked) -> alarm.setTuesday(isChecked));
+            binding.onWed.setOnCheckedChangeListener((v, isChecked) -> alarm.setWednesday(isChecked));
+            binding.onThu.setOnCheckedChangeListener((v, isChecked) -> alarm.setThursday(isChecked));
+            binding.onFri.setOnCheckedChangeListener((v, isChecked) -> alarm.setFriday(isChecked));
+            binding.onSat.setOnCheckedChangeListener((v, isChecked) -> alarm.setSaturday(isChecked));
+            binding.onSun.setOnCheckedChangeListener((v, isChecked) -> alarm.setSunday(isChecked));
         });
 
         binding.fragmentCreatealarmScheduleAlarm.setOnClickListener(v -> {
@@ -130,27 +146,19 @@ public class ScheduleAlarmFragment extends Fragment {
      *Method that takes the user input which will be used for the ROOM database
      */
     private void scheduleAlarm() {
-        int alarmId = new Random().nextInt(Integer.MAX_VALUE);
-
-        Alarm alarm = new Alarm(
-                alarmId,
-                TimePickerUtil.getTimePickerHour(binding.fragmentCreatealarmTimePicker),
-                TimePickerUtil.getTimePickerMinute(binding.fragmentCreatealarmTimePicker),
+        Alarm alarm = createAlarmViewModel.save(TimePickerUtil.getTimePickerHour(binding.timePicker),
+                TimePickerUtil.getTimePickerMinute(binding.timePicker),
                 binding.fragmentCreatealarmTitle.getText().toString(),
-                binding.fragmentCreatealarmDescription.getText().toString(),
-                System.currentTimeMillis(),
-                true,
-                binding.fragmentCreatealarmRecurring.isChecked(),
-                binding.fragmentCreatealarmCheckMon.isChecked(),
-                binding.fragmentCreatealarmCheckTue.isChecked(),
-                binding.fragmentCreatealarmCheckWed.isChecked(),
-                binding.fragmentCreatealarmCheckThu.isChecked(),
-                binding.fragmentCreatealarmCheckFri.isChecked(),
-                binding.fragmentCreatealarmCheckSat.isChecked(),
-                binding.fragmentCreatealarmCheckSun.isChecked()
-        );
-        createAlarmViewModel.insert(alarm);
-
+                binding.fragmentCreatealarmDescription.getText().toString());
         alarm.schedule(requireContext());
+    }
+    private void bindWeekDays(Alarm alarm) {
+        binding.onMon.setChecked(alarm.isMonday());
+        binding.onTue.setChecked(alarm.isTuesday());
+        binding.onWed.setChecked(alarm.isWednesday());
+        binding.onThu.setChecked(alarm.isThursday());
+        binding.onFri.setChecked(alarm.isFriday());
+        binding.onSat.setChecked(alarm.isSaturday());
+        binding.onSun.setChecked(alarm.isSunday());
     }
 }

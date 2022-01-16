@@ -49,4 +49,9 @@ public class AlarmRepository {
     public LiveData<List<Alarm>> getAlarmsLiveData() {
         return alarmsLiveData;
     }
+
+    public LiveData<Alarm> getAlarm(int id) {
+        return alarmDao.getAlarm(id);
+    }
+
 }
