@@ -26,7 +26,7 @@
   <h2>About the Project</h2>
 
   <a href="https://github.com/Kim-Arcena/Wakim">
-      <img src="assets/banner.png" alt="Banner" width="1000" height="600">
+      <img src="assets/banner.png" alt="Banner" width="1000" height="470">
     </a>
 
   We are tasked to develop a project where they will apply not only the basics of Java programming, but also Java design patterns, and best practices in Java.
@@ -100,10 +100,15 @@ It can use it for operations of indeterminate time, such as API calls. I have us
 <div>
   <!-- APP SCREENSHOT -->
   <h2>Gallery</h2>
-  <img src="assets/splashScreen.png" alt="Splash Screen" width="25%" height="420">
-  <img src="assets/scheduleAlarm Activity.png" alt="Splash Screen" width="25%" height="420">
-  <img src="assets/mainActivity.png" alt="Splash Screen" width="25%" height="420">
-  <img src="assets/codeScanner.jpg" alt="Splash Screen" width="25%" height="420">
+  <h3>App Screenshots</h3>
+  <img src="assets/splashScreen.png" alt="Splash Screen" width="24%" height="420">
+  <img src="assets/scheduleAlarm Activity.png" alt="Splash Screen" width="24%" height="420">
+  <img src="assets/mainActivity.png" alt="Splash Screen" width="24%" height="420">
+  <img src="assets/codeScanner.jpg" alt="Splash Screen" width="24%" height="420">
+  <br>
+  <h3>QR Codes for Dismissal</h3>
+  <img src="assets/QR1.png" alt="Splash Screen" width="300" height="397">
+  <img src="assets/QR2.png" alt="Splash Screen" width="300" height="397">
   
 </div>
 
