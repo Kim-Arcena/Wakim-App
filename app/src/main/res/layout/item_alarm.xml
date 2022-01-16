@@ -43,6 +43,7 @@
                     android:id="@+id/item_alarm_recurringDays"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/nunito_semibold"
                     android:padding="3dp"
                     android:text="Days"
                     android:textSize="15sp" />

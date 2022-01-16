@@ -14,6 +14,7 @@ import android.os.Build;
 import android.os.IBinder;
 import android.os.VibrationEffect;
 import android.os.Vibrator;
+import android.provider.Settings;
 import android.util.Log;
 
 
@@ -34,7 +35,15 @@ public class AlarmService extends Service {
     @Override
     public void onCreate() {
         super.onCreate();
-        mediaPlayer = MediaPlayer.create(this, R.raw.alarm);
+        mediaPlayer = MediaPlayer.create(this, Settings.System.DEFAULT_ALARM_ALERT_URI);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            mediaPlayer.setAudioAttributes(new AudioAttributes.Builder()
+                    .setFlags(AudioAttributes.FLAG_AUDIBILITY_ENFORCED)
+                    .setLegacyStreamType(AudioManager.STREAM_ALARM)
+                    .setUsage(AudioAttributes.USAGE_ALARM)
+                    .setContentType(AudioAttributes.CONTENT_TYPE_SONIFICATION)
+                    .build());
+        }
         mediaPlayer.setLooping(true);
         vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
     }
@@ -45,11 +54,16 @@ public class AlarmService extends Service {
         String alarmTitle = String.format("%s Alarm", intent.getStringExtra(TITLE));
         Notification notification = new NotificationCompat.Builder(this, CHANNEL_ID)
                 .setContentTitle(alarmTitle)
-                .setContentText("werk kna pls")
+                .setContentText("Umpisahi lang bala")
                 .setSmallIcon(R.drawable.ic_alarm_black_24dp)
                 .setContentIntent(pendingIntent)
                 .build();
-        mediaPlayer.start();
+
+        if(mediaPlayer.isPlaying()) {
+            mediaPlayer.release();
+        } else {
+            mediaPlayer.start();
+        }
         long[] pattern = {100, 200, 100, 200};
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
             VibrationEffect vibe = VibrationEffect.createWaveform(pattern, 0);
