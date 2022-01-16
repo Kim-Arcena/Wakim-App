@@ -24,7 +24,6 @@ import com.example.Wakim.databinding.FragmentCreatealarmBinding;
 
 import java.util.Random;
 
-import butterknife.ButterKnife;
 
 /**
  * This class follows the MVVM design pattern to insert instances of the Alarm model into
@@ -83,7 +82,6 @@ public class CreateAlarmFragment extends Fragment {
      *                           from a previous saved state as given here.
      * @return Return the View for the fragment's UI, or null.
      */
-
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
