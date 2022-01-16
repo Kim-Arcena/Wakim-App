@@ -10,6 +10,7 @@ import androidx.lifecycle.Transformations;
 import com.example.Wakim.data.Alarm;
 import com.example.Wakim.data.AlarmRepository;
 
+import java.util.Calendar;
 import java.util.Random;
 
 /**
@@ -50,11 +51,15 @@ public class ScheduleAlarmViewModel extends AndroidViewModel {
     }
 
     public LiveData<Alarm> getAlarm(int alarmId) {
+        Calendar calendar = Calendar.getInstance();
+        int hour = calendar.get(Calendar.HOUR);
+        int minutes = calendar.get(Calendar.MINUTE);
+
         return Transformations.map(alarmRepository.getAlarm(alarmId), alarm -> {
             this.isNewAlarm = alarm == null;
             this.alarm = alarm != null
                     ? alarm
-                    : new Alarm(new Random().nextInt(Integer.MAX_VALUE), 7, 0);
+                    : new Alarm(new Random().nextInt(Integer.MAX_VALUE), hour, minutes);
             return this.alarm;
         });
     }
