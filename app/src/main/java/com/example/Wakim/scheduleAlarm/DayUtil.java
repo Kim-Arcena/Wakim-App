@@ -9,6 +9,7 @@ public final class DayUtil {
 
     /**
      * This method converts Calendar.DAY_OF_WEEK - (int) to String
+     *
      * @param day
      * @return String of the day
      * @throws Exception

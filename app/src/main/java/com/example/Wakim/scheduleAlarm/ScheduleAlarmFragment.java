@@ -135,6 +135,7 @@ public class ScheduleAlarmFragment extends Fragment {
 
     /**
      * Method that hides the keyboard whenever the user click outside the textview
+     *
      * @param view
      */
     private void hideKeyboard(View view) {
@@ -152,6 +153,12 @@ public class ScheduleAlarmFragment extends Fragment {
                 binding.fragmentCreatealarmDescription.getText().toString());
         alarm.schedule(requireContext());
     }
+
+    /**
+     * Method the binds the weekdays checkbox
+     *
+     * @param alarm
+     */
     private void bindWeekDays(Alarm alarm) {
         binding.onMon.setChecked(alarm.isMonday());
         binding.onTue.setChecked(alarm.isTuesday());

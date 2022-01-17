@@ -22,6 +22,7 @@ public class AlarmRepository {
 
     /**
      * inserts an element in the Room Database
+     *
      * @param alarm
      */
     public void insert(Alarm alarm) {
@@ -31,7 +32,8 @@ public class AlarmRepository {
     }
 
     /**
-     * Updates and alarm in the databse
+     * Updates an alarm in the databse
+     *
      * @param alarm
      */
     public void update(Alarm alarm) {
@@ -40,16 +42,32 @@ public class AlarmRepository {
         });
     }
 
+    /**
+     * Deletes an alarm in the databse
+     *
+     * @param alarm
+     */
     public void delete(Alarm alarm) {
         AlarmDatabase.databaseWriteExecutor.execute(() -> {
             alarmDao.delete(alarm);
         });
     }
 
+    /**
+     * Reads the alarm in the database
+     *
+     * @return
+     */
     public LiveData<List<Alarm>> getAlarmsLiveData() {
         return alarmsLiveData;
     }
 
+    /**
+     * Uses the alarm Id to be used for editing a specific alarm
+     *
+     * @param id
+     * @return
+     */
     public LiveData<Alarm> getAlarm(int id) {
         return alarmDao.getAlarm(id);
     }

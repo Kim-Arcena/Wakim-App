@@ -85,6 +85,7 @@ public class RingActivity extends AppCompatActivity {
 
     /**
      * This method checks whether the permission is granted or not, if yes, startScanning() will be called.
+     *
      * @param requestCode
      * @param permissions
      * @param grantResults

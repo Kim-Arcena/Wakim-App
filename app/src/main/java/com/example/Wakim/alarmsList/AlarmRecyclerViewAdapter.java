@@ -87,7 +87,6 @@ public class AlarmRecyclerViewAdapter extends RecyclerView.Adapter<AlarmViewHold
 
     /**
      * Returns the total number of items in the data set held by the adapter.
-     *
      * @return The total number of items in this adapter.
      */
     @Override
@@ -95,10 +94,21 @@ public class AlarmRecyclerViewAdapter extends RecyclerView.Adapter<AlarmViewHold
         return alarms.size();
     }
 
+    /**
+     * This method sets an alarm
+     *
+     * @param alarms
+     */
     public void setAlarms(List<Alarm> alarms) {
         this.alarms = alarms;
         notifyDataSetChanged();
     }
+
+    /**
+     * This method is called when a view created by this adapter has been recycled.
+     *
+     * @param holder
+     */
     @Override
     public void onViewRecycled(@NonNull AlarmViewHolder holder) {
         super.onViewRecycled(holder);

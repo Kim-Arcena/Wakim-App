@@ -15,6 +15,9 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
+/**
+ * This class reschedule any alarms that were cancelled when the device was booted
+ */
 public class RescheduleAlarmsService extends LifecycleService {
     @Override
     public void onCreate() {

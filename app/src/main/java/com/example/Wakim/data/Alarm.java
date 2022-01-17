@@ -178,6 +178,7 @@ public class Alarm {
 
     /**
      * This schedule method should be invoked right after the alarm information are supplied in the CreateAlarmFragment method.
+     *
      * @param context
      * The schedule method creates an Intent for AlarmBroadcastReceiver and provides data about the Alarm as Intent Extras.
      * It creates the PendingIntent using the Intent previously created.
@@ -234,6 +235,7 @@ public class Alarm {
 
     /**
      * This method is used whenever the Toast is shown after the alarm is created
+     *
      * @return abbreviation of days
      */
     public String getRecurringDaysString() {
@@ -268,6 +270,7 @@ public class Alarm {
 
     /**
      * This method is used to cancel the Alarm
+     *
      * @param context
      * It takes a reference to the AlarmManager by calling getSystemService(Context.ALARM_SERVICE).
      * Then it create an Intent that uses the AlarmBroadcastReceiver and use the Intent to create a PendingIntent

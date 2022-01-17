@@ -9,6 +9,9 @@ import androidx.room.RoomDatabase;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
+/**
+ * This class serves as the base class for all Room databases. This class must be extended by all classes tagged with Database.
+ */
 @Database(entities = {Alarm.class}, version = 1, exportSchema = false)
 public abstract class AlarmDatabase extends RoomDatabase {
     public abstract AlarmDao alarmDao();
@@ -18,6 +21,7 @@ public abstract class AlarmDatabase extends RoomDatabase {
     public static final ExecutorService databaseWriteExecutor = Executors.newFixedThreadPool(NUMBER_OF_THREADS);
 
     /**
+     * This method is the database builder
      *
      * @param context
      * @return

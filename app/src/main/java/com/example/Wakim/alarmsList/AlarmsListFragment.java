@@ -110,10 +110,16 @@ public class AlarmsListFragment extends Fragment implements OnManageListener {
         return view;
     }
 
+    /**
+     *  This method opens the ScheduleAlarm Activity
+     */
     private void startScheduleAlarmActivity() {
         startActivity(new Intent(getContext(), ScheduleAlarmActivity.class));
     }
 
+    /**
+     * This method returns the view when released
+     */
     @Override
     public void onDestroyView() {
         super.onDestroyView();
@@ -121,7 +127,7 @@ public class AlarmsListFragment extends Fragment implements OnManageListener {
     }
 
     /**
-     * This class is has a toggle listener that, depending on the state of the alarm, will either schedule or cancel the alarm.
+     * This method is has a toggle listener that, depending on the state of the alarm, will either schedule or cancel the alarm.
      * @param alarm
      */
     @Override
@@ -136,17 +142,32 @@ public class AlarmsListFragment extends Fragment implements OnManageListener {
         }
     }
 
+    /**
+     * This method deletes an alarm
+     *
+     * @param alarm
+     */
     @Override
     public void onDelete(Alarm alarm) {
         alarm.cancelAlarm(requireContext());
         alarmsListViewModel.delete(alarm);;
     }
 
+    /**
+     * This method update an alarm by reopening an a
+     *
+     * @param alarm
+     */
     @Override
     public void onEdit(Alarm alarm) {
         startScheduleAlarmActivity(alarm);
     }
 
+    /**
+     * This method update an alarm by reopening the ScheduleAlarm Activity of the specific alarmId
+     *
+     * @param alarm
+     */
     private void startScheduleAlarmActivity(Alarm alarm) {
         Intent intent = new Intent(getContext(), ScheduleAlarmActivity.class);
         intent.putExtra("alarmId", alarm.getAlarmId());

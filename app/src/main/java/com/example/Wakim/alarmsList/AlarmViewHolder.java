@@ -32,6 +32,7 @@ public class AlarmViewHolder extends RecyclerView.ViewHolder {
 
     /**
      * This method is called for each ViewHolder to bind it to the adapter. This is where we will pass our data to our ViewHolder.
+     *
      * @param alarm
      */
     public void bind(Alarm alarm) {
@@ -43,7 +44,7 @@ public class AlarmViewHolder extends RecyclerView.ViewHolder {
         binding.itemAlarmTime.setText(alarmText);
         binding.itemAlarmStarted.setChecked(alarm.isStarted());
         if (alarm.getTitle().length() != 0) {
-            binding.itemAlarmTitle.setText(alarm.getTitle());
+            binding.itemAlarmTitle.setText(String.format("%s\n%.15s...", alarm.getTitle(), alarm.getDescription()));
         }
         else {
             binding.itemAlarmTitle.setText(String.format("%s\n%s ", "Alarm", "No Description"));

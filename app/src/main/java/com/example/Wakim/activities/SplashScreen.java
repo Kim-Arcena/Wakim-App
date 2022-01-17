@@ -27,6 +27,7 @@ public class SplashScreen extends AppCompatActivity {
 
     /**
      * Displays the logo and the slogan with animations
+     *
      * @param savedInstanceState
      */
     @Override

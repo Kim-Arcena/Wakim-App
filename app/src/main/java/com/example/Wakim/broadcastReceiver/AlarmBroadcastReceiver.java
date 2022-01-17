@@ -11,6 +11,9 @@ import com.example.Wakim.service.RescheduleAlarmsService;
 
 import java.util.Calendar;
 
+/**
+ * This class handles the broadcast from the AlarmManager.
+ */
 public class AlarmBroadcastReceiver extends BroadcastReceiver {
     public static final String MONDAY = "MONDAY";
     public static final String TUESDAY = "TUESDAY";
@@ -22,7 +25,15 @@ public class AlarmBroadcastReceiver extends BroadcastReceiver {
     public static final String TITLE = "TITLE";
     public static final String DESCRIPTION = "DESCRIPTION";
     public static final String RECURRING = "RECURRING";
-    
+
+    /**
+     * This method verifies that the broadcast received is not the same as the broadcast transmitted when
+     * the device is powered on. If that is not the case, the broadcast refers to an alert,
+     * and we then obtain data from the Intent to determine whether or not the alarm is reoccurring.
+     *
+     * @param context
+     * @param intent
+     */
     @Override
     public void onReceive(Context context, Intent intent) {
         //intent action sent in broadcast when the device boots
@@ -43,7 +54,11 @@ public class AlarmBroadcastReceiver extends BroadcastReceiver {
         }
     }
 
-
+    /**
+     * This method checks if the alarm scheduled today
+     * @param intent
+     * @return
+     */
     private boolean alarmIsToday(Intent intent) {
         Calendar calendar = Calendar.getInstance();
         calendar.setTimeInMillis(System.currentTimeMillis());
@@ -83,6 +98,11 @@ public class AlarmBroadcastReceiver extends BroadcastReceiver {
 
     }
 
+    /**
+     * This method calls the AlarmService class responsible for the notification
+     * @param context
+     * @param intent
+     */
     private void startAlarmService(Context context, Intent intent) {
         Intent intentService = new Intent(context, AlarmService.class);
         intentService.putExtra(TITLE, intent.getStringExtra(TITLE));
@@ -93,6 +113,11 @@ public class AlarmBroadcastReceiver extends BroadcastReceiver {
             context.startService(intentService);
         }
     }
+
+    /**
+     * This method calls the RescheduleAlarmsService which reschedule the Alarm using it’s schedule method
+     * @param context
+     */
     private void startRescheduleAlarmsService(Context context) {
         Intent intentService = new Intent(context, RescheduleAlarmsService.class);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {

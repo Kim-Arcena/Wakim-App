@@ -23,6 +23,7 @@ public class ScheduleAlarmViewModel extends AndroidViewModel {
 
     /**
      * Method that creates a view model for the application
+     *
      * @param application
      */
     public ScheduleAlarmViewModel(@NonNull Application application) {
@@ -33,8 +34,12 @@ public class ScheduleAlarmViewModel extends AndroidViewModel {
 
     /**
      * Method that inserts new records to the Room Database
+     *
      * @param hour
-     * @param
+     * @param minute
+     * @param title
+     * @param description
+     * @return
      */
     public Alarm save(int hour, int minute, String title, String description) {
         alarm.setHour(hour);
