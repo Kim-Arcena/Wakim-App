@@ -67,7 +67,6 @@ public class AlarmsListFragment extends Fragment implements OnManageListener {
     }
 
 
-
     /**
      * This method navigates the user to the CreateAlarmFragment if the user selects the button to add an alarm.
      *
@@ -126,6 +125,7 @@ public class AlarmsListFragment extends Fragment implements OnManageListener {
 
     /**
      * This method is has a toggle listener that, depending on the state of the alarm, will either schedule or cancel the alarm.
+     *
      * @param alarm
      */
     @Override
@@ -133,8 +133,7 @@ public class AlarmsListFragment extends Fragment implements OnManageListener {
         if (alarm.isStarted()) {
             alarm.cancelAlarm(requireContext());
             alarmsListViewModel.update(alarm);
-        }
-        else {
+        } else {
             alarm.schedule(requireContext());
             alarmsListViewModel.update(alarm);
         }

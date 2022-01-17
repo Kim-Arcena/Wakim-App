@@ -48,27 +48,11 @@ public class Alarm {
 
     private long created;
 
-    public Alarm(int alarmId, int hour, int minute, String title, String description, long created, boolean started, boolean recurring,
-                 boolean monday, boolean tuesday, boolean wednesday, boolean thursday, boolean friday, boolean saturday, boolean sunday) {
+    public Alarm(int alarmId, int hour, int minute) {
         this.alarmId = alarmId;
         this.hour = hour;
         this.minute = minute;
-        this.started = started;
-
-        this.recurring = recurring;
-
-        this.monday = monday;
-        this.tuesday = tuesday;
-        this.wednesday = wednesday;
-        this.thursday = thursday;
-        this.friday = friday;
-        this.saturday = saturday;
-        this.sunday = sunday;
-
-        this.title = title;
-        this.description = description;
-
-        this.created = created;
+        this.created = System.currentTimeMillis();
     }
 
     public int getHour() {
@@ -123,6 +107,60 @@ public class Alarm {
         return sunday;
     }
 
+    public void setHour(int hour) {
+        this.hour = hour;
+    }
+
+    public void setMinute(int minute) {
+        this.minute = minute;
+    }
+
+    public void setStarted(boolean started) {
+        this.started = started;
+    }
+
+    public void setRecurring(boolean recurring) {
+        this.recurring = recurring;
+        if (!recurring) {
+            monday = tuesday = wednesday = thursday = friday = saturday = sunday = false;
+        }
+    }
+
+    public void setMonday(boolean monday) {
+        this.monday = monday;
+    }
+
+    public void setTuesday(boolean tuesday) {
+        this.tuesday = tuesday;
+    }
+
+    public void setWednesday(boolean wednesday) {
+        this.wednesday = wednesday;
+    }
+
+    public void setThursday(boolean thursday) {
+        this.thursday = thursday;
+    }
+
+    public void setFriday(boolean friday) {
+        this.friday = friday;
+    }
+
+    public void setSaturday(boolean saturday) {
+        this.saturday = saturday;
+    }
+
+    public void setSunday(boolean sunday) {
+        this.sunday = sunday;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
     public String getTitle() {
         return title;
     }
@@ -162,7 +200,6 @@ public class Alarm {
 
         PendingIntent alarmPendingIntent = PendingIntent.getBroadcast(context, alarmId, intent, 0);
 
-        //take the time and locale of the system
         Calendar calendar = Calendar.getInstance();
         calendar.setTimeInMillis(System.currentTimeMillis());
         calendar.set(Calendar.HOUR_OF_DAY, hour);
@@ -175,23 +212,21 @@ public class Alarm {
             calendar.set(Calendar.DAY_OF_MONTH, calendar.get(Calendar.DAY_OF_MONTH) + 1);
         }
         if (!recurring) {
-            String toastText = null;
-            try {
-                toastText = String.format("One Time Alarm %s scheduled for %s at %02d:%02d", title, DayUtil.toStringDay(calendar.get(Calendar.DAY_OF_WEEK)), hour%12, minute, alarmId);
-            }
-            catch (Exception e){
-                e.printStackTrace();
-            }
-            Toast.makeText(context, toastText, Toast.LENGTH_LONG).show();
-            alarmManager.setExact(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), alarmPendingIntent);
-        }
-        else{
-            String toastText = String.format("Recurring Alarm %s scheduled for %s at %02d:%02d", title, getRecurringDaysString(), hour%12, minute, alarmId);
-            Toast.makeText(context, toastText, Toast.LENGTH_LONG).show();
-
+            alarmManager.setExact(
+                    AlarmManager.RTC_WAKEUP,
+                    calendar.getTimeInMillis(),
+                    alarmPendingIntent
+            );
+        } else {
             final long RUN_DAILY = 24 * 60 * 60 * 1000;
-            alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), RUN_DAILY, alarmPendingIntent);
+            alarmManager.setRepeating(
+                    AlarmManager.RTC_WAKEUP,
+                    calendar.getTimeInMillis(),
+                    RUN_DAILY,
+                    alarmPendingIntent
+            );
         }
+
         this.started = true;
     }
 

@@ -16,7 +16,11 @@ import org.jetbrains.annotations.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
-
+/**
+ * This class contains Adapter and ViewHolder. These two classes work together to define how your data is displayed.
+ * The ViewHolder is a wrapper around a View that contains the layout for an individual item in the list. The Adapter creates
+ * ViewHolder objects as needed, and also sets the data for those views. The process of associating views to their data is called binding.
+ */
 public class AlarmRecyclerViewAdapter extends RecyclerView.Adapter<AlarmViewHolder> {
     private List<Alarm> alarms;
     private final OnManageListener listener;
