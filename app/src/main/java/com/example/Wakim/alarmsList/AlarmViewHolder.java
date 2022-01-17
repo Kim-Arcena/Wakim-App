@@ -1,20 +1,10 @@
 package com.example.Wakim.alarmsList;
 
-import android.view.View;
-import android.widget.Button;
-import android.widget.CompoundButton;
-import android.widget.ImageView;
-import android.widget.Switch;
-import android.widget.TextView;
-
-import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.Wakim.R;
 import com.example.Wakim.data.Alarm;
 import com.example.Wakim.databinding.ItemAlarmBinding;
-
-import org.jetbrains.annotations.NotNull;
 
 /**
  * This class displays or binds the records from the database to the user Interface

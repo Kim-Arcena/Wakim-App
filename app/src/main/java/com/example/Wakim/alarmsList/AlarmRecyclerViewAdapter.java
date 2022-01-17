@@ -9,12 +9,10 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.Wakim.data.Alarm;
-import com.example.Wakim.R;
 import com.example.Wakim.databinding.ItemAlarmBinding;
 
 import org.jetbrains.annotations.NotNull;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 

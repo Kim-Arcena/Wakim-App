@@ -8,14 +8,13 @@ import android.content.Intent;
 import android.media.AudioAttributes;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
-import android.media.RingtoneManager;
-import android.net.Uri;
+
 import android.os.Build;
 import android.os.IBinder;
 import android.os.VibrationEffect;
 import android.os.Vibrator;
 import android.provider.Settings;
-import android.util.Log;
+
 
 
 import org.jetbrains.annotations.Nullable;
@@ -24,7 +23,7 @@ import androidx.core.app.NotificationCompat;
 import com.example.Wakim.activities.RingActivity;
 import com.example.Wakim.R;
 
-import java.io.IOException;
+
 
 import static com.example.Wakim.application.App.CHANNEL_ID;
 import static com.example.Wakim.broadcastReceiver.AlarmBroadcastReceiver.TITLE;

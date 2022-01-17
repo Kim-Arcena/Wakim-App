@@ -18,8 +18,6 @@ import android.view.inputmethod.InputMethodManager;
 import com.example.Wakim.data.Alarm;
 import com.example.Wakim.databinding.FragmentSchedulealarmBinding;
 
-import java.util.Random;
-
 
 /**
  * This class follows the MVVM design pattern to insert instances of the Alarm model into

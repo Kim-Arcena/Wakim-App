@@ -7,8 +7,6 @@ import androidx.room.Insert;
 import androidx.room.Query;
 import androidx.room.Update;
 
-import com.example.Wakim.data.Alarm;
-
 import java.util.List;
 
 /**

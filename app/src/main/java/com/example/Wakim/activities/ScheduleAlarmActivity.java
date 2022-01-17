@@ -6,11 +6,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
-import com.example.Wakim.R;
 import com.example.Wakim.databinding.ActivityScheduleAlarmBinding;
 
 /**
- * Binds the fragment for scheduleAlarm  since it is going to be reused during updating an alarm
+ * Binds the fragment for ScheduleAlarm  since it is going to be reused during updating an alarm
  */
 public class ScheduleAlarmActivity extends AppCompatActivity {
 

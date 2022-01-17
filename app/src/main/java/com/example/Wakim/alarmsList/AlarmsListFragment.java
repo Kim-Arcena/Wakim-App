@@ -12,10 +12,8 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.LifecycleObserver;
 import androidx.lifecycle.ViewModelProviders;
-import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
-import com.example.Wakim.R;
 import com.example.Wakim.activities.ScheduleAlarmActivity;
 import com.example.Wakim.data.Alarm;
 import com.example.Wakim.databinding.FragmentListalarmsBinding;
