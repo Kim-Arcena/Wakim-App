@@ -26,7 +26,7 @@
   <h2>About the Project</h2>
 
   <a href="https://github.com/Kim-Arcena/Wakim">
-      <img src="assets/banner.png" alt="Banner" width="1000" height="470">
+      <img src="assets/banner.png" alt="Banner" width="1000" height="590">
     </a>
 
   We are tasked to develop a project where they will apply not only the basics of Java programming, but also Java design patterns, and best practices in Java.
@@ -73,7 +73,7 @@
 It can use it for operations of indeterminate time, such as API calls. I have used it to respond to user input using the onManageListener interface.</p>
         <h3><li>Structural Design Pattern</li></h3>
         <h4>Adapter Design Pattern</h4>
-        <p>I used this design pattern to create dynamic alert list using RecyclerView (can found in alarmList package). Each RecyclerView has its own Adapter. The Adapter is in charge of mapping our models to their appropriate View components (ViewHolders), thereby adhering to the traditional Adapter design pattern definition. These two classes (Adapter and ViewHolder) collaborate to establish how your data is displayed. The ViewHolder is a View wrapper that includes the layout for a single item in the list. As needed, the Adapter generates ViewHolder objects and sets the data for those views.</p>
+        <p>I used this design pattern to a create dynamic alert list using RecyclerView (can be found in the alarmList package). Each RecyclerView has its own Adapter. The Adapter is in charge of mapping our models to their appropriate View components (ViewHolders), thereby adhering to the traditional Adapter design pattern definition. These two classes (Adapter and ViewHolder) collaborate to establish how your data is displayed. The ViewHolder is a View wrapper that includes the layout for a single item in the list. As needed, the Adapter generates ViewHolder objects and sets the data for those views.</p>
     </ol>
 </div>
 
@@ -93,8 +93,29 @@ It can use it for operations of indeterminate time, such as API calls. I have us
 </div>
 
 <div>
-  <!-- SETUP -->
-  <h2>Setup</h2>
+  <!-- PROJECT SETUP -->
+  <h2>Project Setup</h2>
+    <ol>
+        <li>Download the Zip from the website or clone from Github Desktop. (Turn off VCS integration - Optional)</li>
+        <li>Copy the extracted folder into your AndroidStudioProjects folder, which must include the hidden.git folder. (Optional)</li>
+        <li>Open Android Studio.<b> Go to File -> New -> Import Project.</b> Then choose the specific project you want to import and then click <b> Next->Finish.</b></li>
+        <li>It will build the Gradle automatically and it will be ready to use.</li>
+    </ol>
+    <h3>Possible errors that you may encounter and how to solve it.</h3>
+    <p><b>Error:package android.support.v4.app does not exist. </b><br>To fix it go to <b>Gradle Scripts->build.gradle(Module:app)</b> and the add the dependecies:</p>  
+    <pre>
+      dependencies {      
+          compile fileTree(dir: 'libs', include: ['*.jar'])  
+          compile 'com.android.support:appcompat-v7:21.0.3'  
+      }
+     </pre>
+     <p><b>Error:SDK location not found. Define location with sdk.dir in the local.properties file or with an ANDROID_HOME environment variable.</b>
+       <br><b>Delete</b> the following files and go to <b>File -> Invalidate Cache / Restart.</b></p>
+     
+      .idea/gradle.xml
+      .idea/workspace.xml
+     
+    
 </div>
 
 <div>
