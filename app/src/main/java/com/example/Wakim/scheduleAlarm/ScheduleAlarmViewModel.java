@@ -63,7 +63,7 @@ public class ScheduleAlarmViewModel extends AndroidViewModel {
      */
     public LiveData<Alarm> getAlarm(int alarmId) {
         Calendar calendar = Calendar.getInstance();
-        int currentHour = calendar.get(Calendar.HOUR);
+        int currentHour = calendar.get(Calendar.HOUR_OF_DAY);
         int currentMinute = calendar.get(Calendar.MINUTE);
 
         return Transformations.map(alarmRepository.getAlarm(alarmId), alarm -> {
