@@ -10,7 +10,8 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 /**
- * This class serves as the base class for all Room databases. This class must be extended by all classes tagged with Database.
+ * This class serves as the base class for all Room databases. This class must be extended by all classes
+ * tagged with Database and represents tables in the apps database..
  */
 @Database(entities = {Alarm.class}, version = 1, exportSchema = false)
 public abstract class AlarmDatabase extends RoomDatabase {

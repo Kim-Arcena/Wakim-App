@@ -1,6 +1,7 @@
 package com.example.Wakim.data;
 
 
+import android.annotation.SuppressLint;
 import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.Context;
@@ -29,7 +30,7 @@ import static com.example.Wakim.broadcastReceiver.AlarmBroadcastReceiver.TUESDAY
 import static com.example.Wakim.broadcastReceiver.AlarmBroadcastReceiver.WEDNESDAY;
 
 /**
- * This class is use to model an alarm as records in the database/
+ * This class is use to model an alarm as records in the database
  */
 @Entity(tableName = "alarm_table")
 public class Alarm {
@@ -183,6 +184,7 @@ public class Alarm {
      * The schedule method creates an Intent for AlarmBroadcastReceiver and provides data about the Alarm as Intent Extras.
      * It creates the PendingIntent using the Intent previously created.
      */
+    @SuppressLint("DefaultLocale")
     public void schedule(Context context) {
         AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
 
@@ -212,12 +214,21 @@ public class Alarm {
             calendar.set(Calendar.DAY_OF_MONTH, calendar.get(Calendar.DAY_OF_MONTH) + 1);
         }
         if (!recurring) {
+            String toastText = null;
+            try {
+                toastText = String.format("One Time Alarm scheduled for %s at %02d:%02d %s",
+                        DayUtil.toStringDay(calendar.get(Calendar.DAY_OF_WEEK)), hour%12, minute, ((hour>=12) ? "PM" : "AM"), alarmId);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            Toast.makeText(context, toastText, Toast.LENGTH_LONG).show();
             alarmManager.setExact(
                     AlarmManager.RTC_WAKEUP,
                     calendar.getTimeInMillis(),
                     alarmPendingIntent
             );
-        } else {
+        }
+        else {
             final long RUN_DAILY = 24 * 60 * 60 * 1000;
             alarmManager.setRepeating(
                     AlarmManager.RTC_WAKEUP,
@@ -281,7 +292,7 @@ public class Alarm {
         this.started = false;
 
         //notify user via toast
-        String toastText = String.format("Cancelled Alarm scheduled at %02d:%02d", hour%12, minute);
+        String toastText = String.format("Cancelled Alarm scheduled at %02d:%02d %s", hour%12, minute, ((hour>=12) ? "PM" : "AM"));
         Toast.makeText(context, toastText, Toast.LENGTH_LONG).show();
         Log.i("cancel", toastText);
 

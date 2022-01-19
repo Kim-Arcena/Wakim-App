@@ -10,7 +10,7 @@ import androidx.room.Update;
 import java.util.List;
 
 /**
- * This interface defines the standard operations to be performed on an alarm model.
+ * This interface provide methods that your app can use to query, update, insert, and delete data in the database.
  */
 @Dao
 public interface AlarmDao {
