@@ -25,12 +25,12 @@
   <!-- ABOUT THE PROJECT -->
   <h2>About the Project</h2>
 
-  <a href="https://github.com/Kim-Arcena/Wakim">
+  <a href="https://www.youtube.com/watch?v=clkS_GCXPOs&list=PLazG4_Fcrk6aB5DfmQsnKyI8IExyPfoA5&index=2&ab_channel=KimberlyArce%C3%B1a">
       <img src="assets/banner.png" alt="Banner" width="1000" height="590">
     </a>
 
   We are tasked to develop a project where they will apply not only the basics of Java programming, but also Java design patterns, and best practices in Java.
-  Preferably a project that is related to our hobbies or interests yet I decided to develop a project that could personally benefit me.
+  Preferably a project that is related to our hobbies or interests yet I decided to develop a project that could personally benefit me. <b> Click the banner for a surprise.</b>
 
   <h3>Overview:</h3>
 
@@ -136,10 +136,12 @@ It can use it for operations of indeterminate time, such as API calls. I have us
 <div>
   <!-- JAVA DOCUMENTATION (JAVADOC) -->
   <h2>Java Documentation (JavaDoc)</h2>
+  <a href="https://github.com/Kim-Arcena/Wakim/releases"><strong>Check Release</strong></a>
 </div>
 
 <div>
   <!-- EXECUTABLE APK FILE -->
   <h2>Executable APK File</h2>
+  <a href="https://github.com/Kim-Arcena/Wakim/releases"><strong>Check Release</strong></a>
 </div>
 
