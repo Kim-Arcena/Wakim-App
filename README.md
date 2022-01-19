@@ -8,12 +8,12 @@
   <h3 align="center">Wakim App</h3>
 
   <p align="center">
-    CMSC 22 Final Project
+    <h4 align="center">QR Based Alarm System</h4>
     <br />
     <a href="https://github.com/Kim-Arcena/Wakim"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/Kim-Arcena/Wakim">View Demo</a>
+    <a href="https://www.youtube.com/watch?v=bzFK0Q1bCL0&ab_channel=KimberlyArce%C3%B1a">View Demo</a>
     ·
     <a href="https://github.com/Kim-Arcena/Wakim/issues">Report Bug</a>
     ·
