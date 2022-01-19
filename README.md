@@ -136,10 +136,12 @@ It can use it for operations of indeterminate time, such as API calls. I have us
 <div>
   <!-- JAVA DOCUMENTATION (JAVADOC) -->
   <h2>Java Documentation (JavaDoc)</h2>
+  <a href="https://github.com/Kim-Arcena/Wakim/releases"><strong>Check Release</strong></a>
 </div>
 
 <div>
   <!-- EXECUTABLE APK FILE -->
   <h2>Executable APK File</h2>
+  <a href="https://github.com/Kim-Arcena/Wakim/releases"><strong>Check Release</strong></a>
 </div>
 
