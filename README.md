@@ -26,7 +26,7 @@
   <h2>About the Project</h2>
 
   <p align="center">
-    <img src="assets/appBanner.gif" alt="banner" width="100%" height="585" />
+    <img src="assets/appBanner.gif" alt="banner" width="100%" height="583" />
   </p>
 
   <p>We are tasked to develop a project where they will apply not only the basics of Java programming, but also Java design patterns, and best practices in Java.
@@ -123,10 +123,10 @@
   <!-- APP SCREENSHOT -->
   <h2>Gallery</h2>
   <h3>App Screenshots</h3>
-  <img src="assets/splashScreen.png" alt="Splash Screen" width="24%" >
-  <img src="assets/scheduleAlarm Activity.png" alt="Splash Screen" width="24%" >
-  <img src="assets/mainActivity.png" alt="Splash Screen" width="24%" >
-  <img src="assets/codeScanner.jpg" alt="Splash Screen" width="24%" height="480">
+  <img src="assets/splashScreen.png" alt="Splash Screen" width="24%" height="460">
+  <img src="assets/scheduleAlarm Activity.png" alt="Splash Screen" width="24%" height="460" >
+  <img src="assets/mainActivity.png" alt="Splash Screen" width="24%" height="460">
+  <img src="assets/codeScanner.jpg" alt="Splash Screen" width="24%" height="460">
   <br>
   <h3>QR Codes for Dismissal</h3>
   <img src="assets/QR1.png" alt="Splash Screen" width="300" height="397">
