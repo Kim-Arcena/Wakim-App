@@ -25,17 +25,17 @@
   <!-- ABOUT THE PROJECT -->
   <h2>About the Project</h2>
 
-  <a href="https://www.youtube.com/watch?v=clkS_GCXPOs&list=PLazG4_Fcrk6aB5DfmQsnKyI8IExyPfoA5&index=2&ab_channel=KimberlyArce%C3%B1a">
-      <img src="assets/appBanner.gif" alt="Banner" width="1000" height="590">
-    </a>
+  <p align="center">
+    <img src="assets/appBanner.gif" alt="banner" width="100%" height="585" />
+  </p>
 
-  We are tasked to develop a project where they will apply not only the basics of Java programming, but also Java design patterns, and best practices in Java.
-  Preferably a project that is related to our hobbies or interests yet I decided to develop a project that could personally benefit me.
+  <p>We are tasked to develop a project where they will apply not only the basics of Java programming, but also Java design patterns, and best practices in Java.
+  Preferably a project that is related to our hobbies or interests yet I decided to develop a project that could personally benefit me. I developed this app to control my  oversleeping issues and bad sleeping routines.</p>
 
   <h3>Overview:</h3>
 
   <ul>
-    <li>Native android Application featuring an alarm system that would force me to wake up by scanning a specific QR Code.</li>
+    <li>Native android application featuring an alarm system that would force me to wake up by scanning a specific QR Code.</li>
     <li>CRUD application with Room Database</li>
     <li>Uses Java design patterns and best practices</li>
   </ul>
@@ -58,22 +58,23 @@
   <!-- DESIGN PATTERNS -->
   <h2>Design Patterns</h2>
     <h3>MVVM Architectural Design Pattern</h3>
-    <img src="assets/MVVM.png" alt="Splash Screen" width="100%" height="300">
+    <p align="center">
+      <img src="assets/MVVM.png" alt="MVVM"/>
+    </p>
     <p>Image Source: https://www.researchgate.net/figure/The-Model-View-ViewModel-MVVM-architectural-pattern-In-MVVM-the-View-layer-is_fig3_275258051 </p><br>
-    <p>The app will be built using the <b>Model View ViewModel (MVVM) software design pattern.</b> This aids in the creation of a separation of considerations for components within your app, which simplifies the maintenance of your code base over time. Some of the Jetpack architecture components used in this app includes LiveData for enabling the MVVM design pattern, the Navigation architecture component to transition between screens in our app, and the Room persistence library for storing user data. When the user create, update and delete an alarm, the CreateAlarmFragment class use the MVVM design pattern to perform CRUD operations instances of the Alarm model into the Room Database via a ViewModel and a Repository.</p>
+    <p>The app was built using the <b>Model View ViewModel (MVVM) software design pattern.</b> This aids in the creation of separation of components within the app, which simplifies the maintenance of the codebase over time. Some of the Jetpack architecture components used in this app include LiveData for enabling the MVVM design pattern, the Navigation architecture component to transition between screens in our app, and the Room persistence library for storing user data. When the user creates, updates and deletes an alarm, the CreateAlarmFragment class uses the MVVM design pattern to perform CRUD operations instances of the Alarm model into the Room Database via a ViewModel and a Repository.</p>
     <ol>
         <h3><li>Creational Design Pattern</li></h3>
             <h4>Factory Design Pattern</h4>
             <p> Static factory methods allow us to initialize and configure a new Fragment without using its constructor and extra setter methods. It is best practice to provide static factory methods for utilizing fragments since it encapsulates and isolates the actions necessary to setup the object from the client.</p>
             <h4><b>Singleton Design Pattern</b></h4>
-            <p> When creating an AppDatabase object, the singleton design pattern is recommended. Each RoomDatabase instance is fairly expensice, and I hardly require access to numerous instances within a single process.</p>
+            <p> When creating an AppDatabase object, the singleton design pattern is recommended. Each RoomDatabase instance is fairly expensive, and I hardly require access to numerous instances within a single process.</p>
         <h3><li>Behavioral Design Pattern</li></h3>
             <h4>Observer Design Pattern</h4>
-            <p>The Observer pattern defines a one-to-many dependency between objects. When one object changes state, its dependents get a notification and updates automatically.
-It can use it for operations of indeterminate time, such as API calls. I have used it to respond to user input using the onManageListener interface.</p>
+            <p>TThe Observer pattern defines a one-to-many dependency between objects. When one object changes state, its dependents get a notification and update automatically. It can use it for operations of indeterminate time, such as API calls. I have used it to respond to user input using the onManageListener interface.</p>
         <h3><li>Structural Design Pattern</li></h3>
         <h4>Adapter Design Pattern</h4>
-        <p>I used this design pattern to a create dynamic alert list using RecyclerView (can be found in the alarmList package). Each RecyclerView has its own Adapter. The Adapter is in charge of mapping our models to their appropriate View components (ViewHolders), thereby adhering to the traditional Adapter design pattern definition. These two classes (Adapter and ViewHolder) collaborate to establish how your data is displayed. The ViewHolder is a View wrapper that includes the layout for a single item in the list. As needed, the Adapter generates ViewHolder objects and sets the data for those views.</p>
+        <p>I used this design pattern to a create dynamic alarm list using RecyclerView (can be found in the alarmsList package). Each RecyclerView has its own Adapter. The Adapter is in charge of mapping the models to their appropriate View components (ViewHolders), thereby adhering to the traditional Adapter design pattern definition. These two classes (Adapter and ViewHolder) collaborate to establish how the data is displayed. The ViewHolder is a View wrapper that includes the layout for a single item in the list. As needed, the Adapter generates ViewHolder objects and sets the data for those views.</p>
     </ol>
 </div>
 
@@ -102,7 +103,7 @@ It can use it for operations of indeterminate time, such as API calls. I have us
         <li>It will build the Gradle automatically and it will be ready to use.</li>
     </ol>
     <h3>Possible errors that you may encounter and how to solve it.</h3>
-    <p><b>Error:package android.support.v4.app does not exist. </b><br>To fix it go to <b>Gradle Scripts->build.gradle(Module:app)</b> and the add the dependecies:</p>  
+    <p><b>Error:package android.support.v4.app does not exist. </b><br>To fix it go to <b>Gradle Scripts -> build.gradle(Module:app)</b> and the add the dependecies:</p>  
     <pre>
       dependencies {      
           compile fileTree(dir: 'libs', include: ['*.jar'])  
@@ -122,10 +123,10 @@ It can use it for operations of indeterminate time, such as API calls. I have us
   <!-- APP SCREENSHOT -->
   <h2>Gallery</h2>
   <h3>App Screenshots</h3>
-  <img src="assets/splashScreen.png" alt="Splash Screen" width="24%" height="420">
-  <img src="assets/scheduleAlarm Activity.png" alt="Splash Screen" width="24%" height="420">
-  <img src="assets/mainActivity.png" alt="Splash Screen" width="24%" height="420">
-  <img src="assets/codeScanner.jpg" alt="Splash Screen" width="24%" height="420">
+  <img src="assets/splashScreen.png" alt="Splash Screen" width="24%" >
+  <img src="assets/scheduleAlarm Activity.png" alt="Splash Screen" width="24%" >
+  <img src="assets/mainActivity.png" alt="Splash Screen" width="24%" >
+  <img src="assets/codeScanner.jpg" alt="Splash Screen" width="24%" height="480">
   <br>
   <h3>QR Codes for Dismissal</h3>
   <img src="assets/QR1.png" alt="Splash Screen" width="300" height="397">
@@ -136,12 +137,13 @@ It can use it for operations of indeterminate time, such as API calls. I have us
 <div>
   <!-- JAVA DOCUMENTATION (JAVADOC) -->
   <h2>Java Documentation (JavaDoc)</h2>
-  <a href="https://github.com/Kim-Arcena/Wakim/releases"><strong>Check Release</strong></a>
+  <a href="https://github.com/Kim-Arcena/Wakim-App/tree/master/Javadoc"><strong>Check Javadoc Here</strong></a>
 </div>
 
 <div>
   <!-- EXECUTABLE APK FILE -->
   <h2>Executable APK File</h2>
-  <a href="https://github.com/Kim-Arcena/Wakim/releases"><strong>Check Release</strong></a>
+  <a href="https://drive.google.com/file/d/1aS5rgG3Q1YPQh17X_qqPdo0vHTX_taXd/view?usp=sharing"><strong>Check APK Here</strong></a> or
+  <a href="https://github.com/Kim-Arcena/Wakim-App/releases"><strong>Check Release</strong></a>
 </div>
 
